@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار تحديد المستوى التفاعلي (155 سؤالاً) - اللغه الإنجليزية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --font-ar: 'Cairo', sans-serif;
+            --font-en: 'Fredoka', sans-serif;
+        }
+        body {
+            font-family: var(--font-ar);
+            background: linear-gradient(135deg, #f0f9ff 0%, #fefce8 50%, #fdf2f8 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .en-text {
+            font-family: var(--font-en);
+            direction: ltr;
+            display: inline-block;
+        }
+        .en-block {
+            font-family: var(--font-en);
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Hand-drawn SVG Circle Animation for "ضع دائرة" */
+        .circle-svg {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: calc(100% + 16px);
+            height: calc(100% + 16px);
+            pointer-events: none;
+            z-index: 10;
+            overflow: visible;
+        }
+        .circle-path {
+            fill: none;
+            stroke: #ef4444;
+            stroke-width: 4.5;
+            stroke-linecap: round;
+            stroke-dasharray: 900;
+            stroke-dashoffset: 900;
+            transition: stroke-dashoffset 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+            filter: drop-shadow(0 3px 4px rgba(239, 68, 68, 0.25));
+        }
+        .option-circled .circle-path {
+            stroke-dashoffset: 0;
+        }
+
+        /* Custom Scrollbar for Question Board */
+        .custom-scroll::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 9999px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 9999px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Tile Pop Animation */
+        @keyframes popIn {
+            0% { transform: scale(0.85); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .tile-pop {
+            animation: popIn 0.2s ease-out forwards;
+        }
+
+        /* */
+        /* Arrow Drawing Animation for "وصّل بالسهم" */
+        @keyframes drawArrowLine {
+            from { stroke-dashoffset: 600; }
+            to { stroke-dashoffset: 0; }
+        }
+        .match-arrow-path {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 0;
+            animation: drawArrowLine 0.35s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.18));
+            transition: stroke-width 0.2s ease;
+        }
+        .match-port {
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .match-port-active {
+            transform: scale(1.3);
+            box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.25);
+        }
+
+        /* Print Media Styles */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .print-card {
+                box-shadow: none !important;
+                border: 2px solid #cbd5e1 !important;
+                page-break-inside: avoid;
+            }
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-12">
+
+    <header class="no-print bg-white/90 backdrop-blur-md border-b-2 border-indigo-100 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            <!-- Brand & Title -->
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-500 flex items-center justify-center text-white shadow-md">
+                    <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-lg md:text-xl font-black text-indigo-950">اختبار تحديد المستوى التفاعلي الشامل</h1>
+                        <span class="bg-amber-100 text-amber-800 text-xs font-extrabold px-2.5 py-0.5 rounded-full border border-amber-300">155 سؤالاً</span>
+                    </div>
+                    <p class="text-xs text-slate-500 font-semibold">مستوحى من أوراق عمل المعلم ماجد السويهري • <span class="en-text">Langua Learn & Glory English Academy</span></p>
+                </div>
+            </div>
+
+            <!-- Live Progress & Quick Actions -->
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                <div class="bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 flex items-center gap-3 text-xs sm:text-sm font-bold">
+                    <span class="text-indigo-700"><i class="fa-solid fa-check-double ml-1"></i>المُجاب: <span id="hdr-answered">0</span> / 155</span>
+                    <span class="text-slate-300">|</span>
+                    <span class="text-emerald-700"><i class="fa-solid fa-chart-line ml-1"></i>الإنجاز: <span id="hdr-percent">0%</span></span>
+                </div>
+
+                <button onclick="toggleInstantFeedback()" id="btn-instant-mode" class="px-3 py-2 rounded-xl text-xs font-bold border-2 border-emerald-500 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition flex items-center gap-1.5" title="تفعيل أو إيقاف التصحيح الفوري بعد كل سؤال">
+                    <i class="fa-solid fa-bolt text-emerald-600"></i>
+                    <span>التصحيح الفوري: مفعّل</span>
+                </button>
+
+                <button onclick="openDemoModal()" class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white shadow transition flex items-center gap-1.5" title="ملء تلقائي تجريبي لمعاينة النتيجة والطباعة فوراً">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span class="hidden sm:inline">ملء تجريبي للمعلم</span>
+                </button>
+
+                <button onclick="showResultsView()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-md transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-print"></i>
+                    <span>النتيجة والطباعة</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 mt-5">
+        <!-- Student Data Bar (Always accessible) -->
+        <section class="no-print bg-white rounded-3xl p-4 shadow-sm border-2 border-indigo-50 mb-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 items-center">
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1"><i class="fa-solid fa-user-graduate ml-1 text-indigo-500"></i>اسم الطالب / الطالبة:</label>
+                    <input type="text" id="student-name" placeholder="اكتب اسم الطالب هنا..." value="البطل المتميز" oninput="updateStudentData()" class="w-full px-3.5 py-2 rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:outline-none font-bold text-sm bg-slate-50/70">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1"><i class="fa-solid fa-school ml-1 text-purple-500"></i>الصف / المرحلة:</label>
+                    <input type="text" id="student-grade" placeholder="مثال: الصف الخامس / السادس" value="المرحلة الابتدائية / المتوسطة" oninput="updateStudentData()" class="w-full px-3.5 py-2 rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:outline-none font-bold text-sm bg-slate-50/70">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1"><i class="fa-solid fa-chalkboard-user ml-1 text-emerald-500"></i>المعلم / الأكاديمية:</label>
+                    <input type="text" id="teacher-name" value="المعلم ماجد السويهري - Langua Learn" oninput="updateStudentData()" class="w-full px-3.5 py-2 rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:outline-none font-bold text-sm bg-slate-50/70">
+                </div>
+                <div class="flex flex-col justify-end h-full">
+                    <div class="bg-gradient-to-l from-indigo-50 to-purple-50 border border-indigo-100 rounded-2xl p-2.5 flex items-center justify-between">
+                        <div>
+                            <div class="text-xs text-slate-500 font-bold">المستوى الحالي المتوقع</div>
+                            <div id="live-level-badge" class="text-sm font-black text-indigo-800">قيد التقييم (0%)</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-xl" id="live-level-icon">🎯</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Question Type Filter Tabs -->
+        <section class="no-print mb-5 flex flex-wrap items-center justify-between gap-2 bg-white p-2.5 rounded-2xl shadow-sm border border-slate-200">
+            <div class="flex flex-wrap items-center gap-1.5">
+                <button onclick="jumpToSection('all')" id="tab-all" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-indigo-600 text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>كل الأسئلة (1-155)</span>
+                </button>
+                <button onclick="jumpToSection('circle')" id="tab-circle" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-rose-50 text-rose-800 hover:bg-rose-100 border border-rose-200 transition flex items-center gap-1.5">
+                    <i class="fa-regular fa-circle-dot"></i>
+                    <span>ضع دائرة (1-60)</span>
+                </button>
+                <button onclick="jumpToSection('letters')" id="tab-letters" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-spell-check"></i>
+                    <span>رتب الحروف (61-95)</span>
+                </button>
+                <button onclick="jumpToSection('words')" id="tab-words" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-sky-50 text-sky-800 hover:bg-sky-100 border border-sky-200 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-down-short-wide"></i>
+                    <span>رتب الكلمات (96-130)</span>
+                </button>
+                <button onclick="jumpToSection('match')" id="tab-match" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-link"></i>
+                    <span>وصّل (131-155)</span>
+                </button>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button onclick="toggleFullBoardModal()" class="px-3 py-2 rounded-xl text-xs font-extrabold bg-slate-800 text-white hover:bg-slate-900 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-table-cells"></i>
+                    <span>تكبير لوحة الـ 155 سؤالاً</span>
+                </button>
+            </div>
+        </section>
+
+        <div id="exam-workspace" class="no-print grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Active Question Area (8 columns on desktop) -->
+            <div class="lg:col-span-8 flex flex-col gap-4">
+                <div class="bg-white rounded-3xl shadow-lg border-2 border-indigo-100 overflow-hidden transition-all">
+                    <!-- Question Header Banner -->
+                    <div id="q-header-banner" class="bg-gradient-to-l from-indigo-600 via-indigo-700 to-purple-700 text-white p-4 sm:p-5 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <span id="q-number-badge" class="w-12 h-12 rounded-2xl bg-white text-indigo-900 font-black text-lg flex items-center justify-center shadow-md">1</span>
+                            <div>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span id="q-type-badge" class="bg-rose-400/30 border border-white/40 text-white text-xs font-extrabold px-2.5 py-0.5 rounded-full">ضع دائرة حول الإجابة الصحيحة</span>
+                                    <span id="q-topic-badge" class="bg-white/20 text-white text-xs font-bold px-2.5 py-0.5 rounded-full">صيغة التفضيل (Superlatives)</span>
+                                </div>
+                                <h2 id="q-instruction-ar" class="text-sm sm:text-base font-bold text-indigo-100 mt-1">اختر الإجابة الصحيحة بوضع دائرة حولها:</h2>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <button onclick="speakCurrentQuestion()" class="px-3 py-2 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold transition flex items-center gap-1.5" title="استمع للنطق الصوتي">
+                                <i class="fa-solid fa-volume-high"></i>
+                                <span>استمع</span>
+                            </button>
+                            <button onclick="toggleFlagCurrent()" id="btn-flag-q" class="px-3 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition flex items-center gap-1.5" title="تأجيل أو تعليم السؤال للمراجعة">
+                                <i class="fa-regular fa-bookmark"></i>
+                                <span>مراجعة لاحقاً</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question Body Content -->
+                    <div class="p-5 sm:p-7">
+                        <!-- Visual Prompt / Emoji / Context -->
+                        <div id="q-prompt-container" class="mb-6"></div>
+
+                        <!-- Interactive Workspace based on Question Type -->
+                        <div id="q-interactive-area" class="min-h-[210px]"></div>
+
+                        <!-- Instant Feedback Alert Box -->
+                        <div id="q-feedback-box" class="hidden mt-5 p-4 rounded-2xl border-2 transition-all"></div>
+                    </div>
+
+                    <!-- Question Footer Navigation -->
+                    <div class="bg-slate-50 px-5 py-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+                        <button onclick="prevQuestion()" id="btn-prev-q" class="px-5 py-2.5 rounded-xl font-extrabold text-sm bg-white border-2 border-slate-300 text-slate-700 hover:bg-slate-100 disabled:opacity-40 transition flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span>السؤال السابق</span>
+                        </button>
+
+                        <div class="flex items-center gap-2">
+                            <button onclick="clearCurrentAnswer()" class="px-3.5 py-2 rounded-xl font-bold text-xs text-rose-600 bg-rose-50 hover:bg-rose-100 border border-rose-200 transition">
+                                <i class="fa-solid fa-rotate-left ml-1"></i>إعادة محاولة السؤال
+                            </button>
+                            <span id="q-status-pill" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-200 text-slate-700">غير مُجاب</span>
+                        </div>
+
+                        <button onclick="nextQuestion()" id="btn-next-q" class="px-6 py-2.5 rounded-xl font-extrabold text-sm bg-indigo-600 hover:bg-indigo-700 text-white shadow-md transition flex items-center gap-2">
+                            <span>السؤال التالي</span>
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Navigation Board (لوحة الأسئلة 1 - 155) (4 columns on desktop) -->
+            <aside class="lg:col-span-4 bg-white rounded-3xl shadow-lg border-2 border-indigo-100 p-4 sm:p-5 sticky top-20">
+                <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-grip text-indigo-600 text-lg"></i>
+                        <h3 class="font-black text-base text-slate-800">لوحة الأسئلة (155 سؤالاً)</h3>
+                    </div>
+                    <span id="board-filter-label" class="text-xs font-bold bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-lg">الكل (155)</span>
+                </div>
+
+                <!-- Board Status Legend -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-1.5 text-[11px] font-bold mb-3 bg-slate-50 p-2.5 rounded-2xl border border-slate-200/80">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-3.5 h-3.5 rounded bg-emerald-500 inline-block"></span>
+                        <span>إجابة صحيحة (<span id="stat-correct">0</span>)</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-3.5 h-3.5 rounded bg-rose-500 inline-block"></span>
+                        <span>بحاجة لمراجعة (<span id="stat-wrong">0</span>)</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-3.5 h-3.5 rounded bg-white border-2 border-slate-300 inline-block"></span>
+                        <span>لم يُجب (<span id="stat-unanswered">155</span>)</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-3.5 h-3.5 rounded bg-amber-400 inline-block"></span>
+                        <span>مؤجل للمراجعة (<span id="stat-flagged">0</span>)</span>
+                    </div>
+                </div>
+
+                <!-- Filter Mini Buttons -->
+                <div class="flex flex-wrap gap-1 mb-3">
+                    <button onclick="setBoardFilter('all')" id="bf-all" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 text-white">الكل</button>
+                    <button onclick="setBoardFilter('unanswered')" id="bf-unanswered" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">غير مُجاب</button>
+                    <button onclick="setBoardFilter('answered')" id="bf-answered" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">مُجاب</button>
+                    <button onclick="setBoardFilter('flagged')" id="bf-flagged" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">مؤجل</button>
+                </div>
+
+                <!-- 155 Buttons Scrollable Grid -->
+                <div id="question-board-grid" class="grid grid-cols-6 sm:grid-cols-8 lg:grid-cols-6 gap-1.5 max-h-[380px] overflow-y-auto custom-scroll p-1"></div>
+
+                <!-- Direct Jump Input -->
+                <div class="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2">
+                    <input type="number" id="jump-input" min="1" max="155" placeholder="رقم السؤال (1-155)" class="w-full px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-bold focus:outline-none focus:border-indigo-500">
+                    <button onclick="jumpToInputNumber()" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-700 shrink-0">انتقال</button>
+                </div>
+            </aside>
+        </div>
+
+        <section id="results-view" class="hidden">
+            <!-- Top Control Bar for Results (Hidden in Print) -->
+            <div class="no-print bg-white rounded-2xl p-4 mb-5 shadow-sm border border-indigo-100 flex flex-wrap items-center justify-between gap-3">
+                <button onclick="returnToExam()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-sm transition flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span>العودة إلى الأسئلة واللوحة</span>
+                </button>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="window.print()" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-sm shadow-lg transition flex items-center gap-2">
+                        <i class="fa-solid fa-print"></i>
+                        <span>طباعة تقرير تحديد المستوى والشهادة (PDF / ورق)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Printable Diagnostic Report & Certificate Card -->
+            <div class="print-card bg-white rounded-3xl shadow-xl border-4 border-indigo-200 p-6 sm:p-10 relative overflow-hidden">
+                <!-- Decorative Header -->
+                <div class="border-b-2 border-dashed border-slate-200 pb-6 mb-6 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-3xl shadow-md">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl sm:text-3xl font-black text-indigo-950">تقرير نتيجة اختبار تحديد المستوى</h2>
+                            <p class="text-sm font-bold text-slate-500 mt-0.5 en-text">English Placement & Diagnostic Assessment Report (155 Questions)</p>
+                        </div>
+                    </div>
+                    <div class="text-left bg-slate-50 px-4 py-2.5 rounded-2xl border border-slate-200">
+                        <div class="text-xs font-bold text-slate-500">تاريخ التقييم</div>
+                        <div id="rep-date" class="text-sm font-black text-slate-800"></div>
+                    </div>
+                </div>
+
+                <!-- Student Info & Main Level Badge -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-8 items-center">
+                    <div class="md:col-span-7 bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <span class="text-xs font-bold text-slate-400 block">اسم الطالب / الطالبة:</span>
+                                <span id="rep-student-name" class="text-lg font-black text-indigo-950">البطل المتميز</span>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-slate-400 block">الصف / المرحلة:</span>
+                                <span id="rep-student-grade" class="text-base font-bold text-slate-800">المرحلة الابتدائية</span>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-slate-400 block">إشراف المعلم / الأكاديمية:</span>
+                                <span id="rep-teacher-name" class="text-sm font-bold text-slate-700">المعلم ماجد السويهري</span>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-slate-400 block">الأسئلة المُجابة:</span>
+                                <span id="rep-answered-count" class="text-base font-black text-indigo-700">155 / 155</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-slate-200">
+                            <span class="text-xs font-bold text-slate-500 block mb-1">التوصية التربوية وتحديد المستوى:</span>
+                            <p id="rep-recommendation" class="text-sm font-bold text-slate-700 leading-relaxed"></p>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-5 bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800 text-white rounded-3xl p-6 text-center shadow-lg">
+                        <div id="rep-level-emoji" class="text-5xl mb-2">🏆</div>
+                        <div class="text-xs uppercase tracking-wider text-indigo-200 font-bold">المستوى العام للطالب</div>
+                        <div id="rep-level-title" class="text-2xl sm:text-3xl font-black mt-1">متقدم متميز (Level B1/B2)</div>
+                        <div class="my-3 inline-block bg-white/20 px-5 py-2 rounded-2xl backdrop-blur-sm">
+                            <span id="rep-score-number" class="text-3xl font-black">155</span>
+                            <span class="text-lg font-bold text-indigo-100"> / 155</span>
+                            <span id="rep-score-percent" class="mr-2 bg-amber-400 text-slate-900 text-sm font-black px-2.5 py-0.5 rounded-full">100%</span>
+                        </div>
+                        <div id="rep-stars" class="text-amber-300 text-xl tracking-widest mt-1">★★★★★</div>
+                    </div>
+                </div>
+
+                <!-- Breakdown by Question Type (الأقسام الأربعة) -->
+                <h3 class="text-lg font-black text-slate-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-indigo-600"></i>
+                    <span>تحليل الأداء حسب نوع المهارة والسؤال:</span>
+                </h3>
+                <div id="rep-type-breakdown" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"></div>
+
+                <!-- Breakdown by Curriculum Unit (الوحدات الدراسية من أوراق العمل) -->
+                <h3 class="text-lg font-black text-slate-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-book-open-reader text-purple-600"></i>
+                    <span>تحليل المستوى حسب الوحدات والقواعد اللغوية:</span>
+                </h3>
+                <div id="rep-topic-breakdown" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8"></div>
+
+                <!-- Signatures & Print Footer -->
+                <div class="mt-8 pt-6 border-t-2 border-slate-200 flex flex-wrap items-center justify-between gap-4 text-sm font-bold text-slate-600">
+                    <div>
+                        <p>توقيع المعلم المشرف: <span class="text-slate-900 font-black">المعلم ماجد السويهري</span></p>
+                        <p class="text-xs text-slate-400 mt-0.5 en-text">Langua Learn • Glory English Academy</p>
+                    </div>
+                    <div class="text-center">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-extrabold">
+                            تم اجتياز وتوثيق التقييم إلكترونياً بنجاح ✓
+                        </span>
+                    </div>
+                    <div>
+                        <p>توقيع ولي الأمر: .......................................</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Full 155 Question Board Modal -->
+    <div id="full-board-modal" class="no-print fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-5xl w-full max-h-[90vh] flex flex-col shadow-2xl border-2 border-indigo-100 overflow-hidden">
+            <div class="p-4 sm:p-5 bg-indigo-900 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-table-cells text-xl text-amber-400"></i>
+                    <h3 class="font-black text-lg">خريطة الاختبار الكاملة (155 سؤالاً)</h3>
+                </div>
+                <button onclick="toggleFullBoardModal()" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="p-5 overflow-y-auto custom-scroll space-y-5" id="full-board-content"></div>
+        </div>
+    </div>
+
+    <!-- Teacher Auto-Fill Demo Modal -->
+    <div id="demo-modal" class="no-print fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border-2 border-amber-200">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-black text-lg text-slate-800">محاكاة سريعة للمعلم</h3>
+                </div>
+                <button onclick="closeDemoModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 font-semibold leading-relaxed mb-4">
+                نظراً لأن الاختبار يضم <strong>155 سؤالاً</strong>، يمكنك كمعلم تجربة ملء الإجابات تلقائياً بنسب مستويات مختلفة لمعاينة لوحة الأسئلة وشهادة تحديد المستوى والطباعة فوراً، أو مسح الإجابات للبدء من جديد:
+            </p>
+            <div class="space-y-2.5">
+                <button onclick="simulateStudentScore(0.95)" class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-between">
+                    <span>🌟 محاكاة طالب متفوق (مستوى متقدم 95%)</span>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button onclick="simulateStudentScore(0.78)" class="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm flex items-center justify-between">
+                    <span>👍 محاكاة طالب مستوى متوسط (78%)</span>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button onclick="simulateStudentScore(0.52)" class="w-full py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm flex items-center justify-between">
+                    <span>🌱 محاكاة طالب مبتدئ (52%)</span>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button onclick="resetAllAnswers()" class="w-full py-2.5 px-4 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-sm flex items-center justify-center gap-2 mt-3">
+                    <i class="fa-solid fa-trash-can"></i>
+                    <span>تصفير جميع الإجابات والبدء من السؤال 1</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================================
+        // 155 QUESTIONS GENERATOR - DIRECTLY FROM THE 8 WORKSHEETS Provided
+        // Categories:
+        // 1. ضع دائرة حول الإجابة الصحيحة (Circle the correct answer): Q1 - Q60 (60 Qs)
+        // 2. رتب الحروف (Unscramble Letters): Q61 - Q95 (35 Qs)
+        // 3. رتب الكلمات (Arrange Words / Order): Q96 - Q130 (35 Qs)
+        // 4. وصّل (Matching Pairs): Q131 - Q155 (25 Qs)
+        // ============================================================================
+
+        const questions = [];
+
+        // --- SECTION 1: ضع دائرة حول الإجابة الصحيحة (Q1 to Q60) ---
+        const circleRawData = [
+            // From Image 1: Superlatives (Fill in blanks & Choose the correct answer)
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'This is the .................... (good) book.', hint: 'اختر صيغة التفضيل الصحيحة من الصفات غير المنتظمة 📖👑', options: ['goodest', 'better', 'best'], answer: 'best', explain: 'صفة التفضيل من (good) هي (the best).' },
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'He is the .................... (funny) boy in the group.', hint: 'الصفة تنتهي بحرف y يسبقه ساكن 👦😄', options: ['funniest', 'funnier', 'most funny'], answer: 'funniest', explain: 'نحول الـ y إلى i ثم نضيف est فتصبح funniest.' },
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'Winter is the .................... (cold) season in the year.', hint: 'فصل الشتاء هو الأبراد في السنة ⛄❄️', options: ['colder', 'coldest', 'cold'], answer: 'coldest', explain: 'مع الصفة القصيرة cold وبعد the نضيف est: coldest.' },
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'This story is the .................... (interesting) story.', hint: 'صفة طويلة مكونة من عدة مقاطع 📚✨', options: ['more interesting', 'most interesting', 'interestingest'], answer: 'most interesting', explain: 'مع الصفات الطويلة في التفضيل نستخدم the most interesting.' },
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'It is the .................... (bad) shop.', hint: 'صيغة التفضيل من الصفة (bad) 🏪', options: ['worst', 'worse', 'baddest'], answer: 'worst', explain: 'صيغة التفضيل الشاذة من bad هي the worst.' },
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'Math class is the .................... (difficult) class.', hint: 'حصة الرياضيات (صفة طويلة) 🧮', options: ['difficultest', 'more difficult', 'most difficult'], answer: 'most difficult', explain: 'الصفة difficult طويلة، لذا نختار most difficult.' },
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'The blue whale is the .................... (large) animal in the sea.', hint: 'الحوت الأزرق هو أضخم حيوان في البحر 🐋', options: ['large', 'larger', 'largest'], answer: 'largest', explain: 'الصفة large تنتهي بـ e فنضيف st لتصبح largest.' },
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'The cheetah is the .................... animal on land.', hint: 'الفهد هو أسرع حيوان على اليابسة 🐆', options: ['fast', 'faster', 'fastest'], answer: 'fastest', explain: 'بعد أداة التعريف the نختار صيغة التفضيل fastest.' },
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'She is the .................... girl in her class.', hint: 'هي أطول فتاة في فصلها 👧📏', options: ['tall', 'taller', 'tallest'], answer: 'tallest', explain: 'للمقارنة بين فتاة وجميع الفصل نستخدم tallest.' },
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'This is the .................... painting in the museum.', hint: 'هذه أجمل لوحة في المتحف 🖼️', options: ['beautiful', 'most beautiful', 'more beautiful'], answer: 'most beautiful', explain: 'beautiful صفة طويلة وبعد the نختار most beautiful.' },
+            { topic: 'صيغة التفضيل (Superlatives)', prompt: 'This is the .................... box in the shop.', hint: 'هذا أصغر صندوق في المتجر 📦', options: ['smallest', 'smaller', 'small'], answer: 'smallest', explain: 'صيغة التفضيل من small هي smallest.' },
+
+            // From Image 4: Past Simple Practice (Choose + Write verbs in right form)
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'She .................... early yesterday.', hint: 'استيقظت مبكراً بالأمس (yesterday) ⏰', options: ['wake up', 'woke up', 'wakes up'], answer: 'woke up', explain: 'وجود yesterday يدل على الماضي البسيط، وماضي wake up هو woke up.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: "We didn't .................... breakfast at 8 o'clock this morning.", hint: 'انتبه لوجود الفعل المساعد المنفي (didn\'t) 🍳', options: ['have', 'had', 'has'], answer: 'have', explain: 'بعد didn\'t يأتي الفعل دائماً في المصدر (V1) وهو have.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'He .................... to the park last Friday.', hint: 'ذهب إلى الحديقة الجمعة الماضية (last Friday) 🌳', options: ['go', 'went', 'goes'], answer: 'went', explain: 'الماضي من الفعل غير المنتظم go هو went.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'They .................... a new car 2 years ago.', hint: 'اشتروا سيارة جديدة قبل سنتين (2 years ago) 🚗', options: ['buy', 'bought', 'buys'], answer: 'bought', explain: 'الماضي من الفعل buy هو bought.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'I .................... a great movie last night.', hint: 'شاهدت فيلماً رائعاً الليلة الماضية (last night) 🎬', options: ['saw', 'see', 'seeing'], answer: 'saw', explain: 'الماضي من الفعل see هو saw.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'My mother .................... (make) a cake yesterday.', hint: 'صنعت أمي كعكة بالأمس 🎂', options: ['make', 'made', 'making'], answer: 'made', explain: 'التصريف الثاني (الماضي) من make هو made.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'There .................... (is) a big party at school last year.', hint: 'كان هناك حفل كبير في المدرسة العام الماضي 🎉', options: ['was', 'were', 'is'], answer: 'was', explain: 'الماضي من is مع المفرد (a big party) هو was.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'We .................... (take) many photos on our trip this morning.', hint: 'التقطنا العديد من الصور في رحلتنا 📷', options: ['taked', 'took', 'take'], answer: 'took', explain: 'الماضي من الفعل غير المنتظم take هو took.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'He .................... (meet) his friends at the café 3 days ago.', hint: 'قابل أصدقاءه في المقهى قبل 3 أيام ☕', options: ['met', 'meeted', 'meets'], answer: 'met', explain: 'الماضي من الفعل meet هو met.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: "She didn't .................... (eat) rice and chicken last Friday.", hint: 'لم تأكل الأرز والدجاج (لاحظ didn\'t) 🍗', options: ['ate', 'eat', 'eats'], answer: 'eat', explain: 'بعد didn\'t نضع الفعل في التصريف الأول المجرد (eat).' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'They .................... (drink) orange juice with breakfast yesterday.', hint: 'شربوا عصير البرتقال مع الإفطار بالأمس 🧃', options: ['drank', 'drinked', 'drink'], answer: 'drank', explain: 'الماضي من الفعل drink هو drank.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'We .................... (relax) in the garden last night.', hint: 'استرخينا في الحديقة الليلة الماضية (فعل منتظم) 🌿', options: ['relaxed', 'relax', 'relaxes'], answer: 'relaxed', explain: 'الفعل relax منتظم نضيف له ed في الماضي فيصبح relaxed.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: "The train didn't .................... (arrive) 2 hours ago.", hint: 'لم يصل القطار قبل ساعتين (بعد didn\'t) 🚆', options: ['arrived', 'arrive', 'arrives'], answer: 'arrive', explain: 'بعد didn\'t يعود الفعل للمصدر المجرد arrive.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'Omar .................... (read) a comic book last night.', hint: 'قرأ عمر قصة مصورة الليلة الماضية 📖', options: ['read', 'reads', 'reading'], answer: 'read', explain: 'الماضي من الفعل read يكتب بنفس الحروف (read) مع اختلاف النطق.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: "He didn't .................... (buy) a new phone last week.", hint: 'لم يشترِ هاتفاً جديداً الأسبوع الماضي 📱', options: ['bought', 'buy', 'buys'], answer: 'buy', explain: 'بعد didn\'t نستخدم المصدر buy وليس bought.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: 'She .................... (get) a gift on her last birthday.', hint: 'حصلت على هدية في عيد ميلادها الماضي 🎁', options: ['got', 'get', 'gets'], answer: 'got', explain: 'التصريف الثاني من الفعل get هو got.' },
+            { topic: 'الماضي البسيط (Past Simple)', prompt: "He didn't .................... (stay) up late last night.", hint: 'لم يسهر لوقت متأخر الليلة الماضية 🌙', options: ['stayed', 'stay', 'stays'], answer: 'stay', explain: 'بعد didn\'t نختار الفعل المجرد stay.' },
+
+            // From Image 7: Choose the correct answer (Time, Months, Calendar)
+            { topic: 'الشهور والوقت (Months & Time)', prompt: 'We have 12 .................... in the year.', hint: 'لدينا 12 شهراً في السنة 📅', options: ['late', 'months', 'calendar'], answer: 'months', explain: 'السنة تتكون من 12 شهراً (12 months).' },
+            { topic: 'الشهور والوقت (Months & Time)', prompt: 'I have school tomorrow so I have to get up ....................', hint: 'لدي مدرسة غداً لذا يجب أن أستيقظ مبكراً 🌅', options: ['early', 'ago', 'late'], answer: 'early', explain: 'كلمة early تعني مبكراً.' },
+            { topic: 'الشهور والوقت (Months & Time)', prompt: 'I marked my birthday on the ....................', hint: 'حددت يوم ميلادي على التقويم 🗓️', options: ['calendar', 'How long', 'ago'], answer: 'calendar', explain: 'كلمة calendar تعني التقويم.' },
+            { topic: 'الشهور والوقت (Months & Time)', prompt: 'You are .................... ! Hurry up.', hint: 'أنت متأخر! ⌚', options: ['date', 'late', 'calendar'], answer: 'late', explain: 'كلمة late تعني متأخر.' },
+            { topic: 'الشهور والوقت (Months & Time)', prompt: 'What is the .................... today?', hint: 'ما هو تاريخ اليوم؟ 📌', options: ['calendar', 'date', 'ago'], answer: 'date', explain: 'نسأل عن تاريخ اليوم بـ What is the date today?' },
+            { topic: 'الشهور والوقت (Months & Time)', prompt: 'How .................... is your journey to school?', hint: 'كم تستغرق رحلتك إلى المدرسة؟ 🚌', options: ['long', 'ago', 'date'], answer: 'long', explain: 'نسأل عن المدة أو المسافة باستخدام How long.' },
+            { topic: 'الشهور والوقت (Months & Time)', prompt: 'I was in Abha 3 months ....................', hint: 'كنت في أبها قبل 3 أشهر ⛰️', options: ['date', 'ago', 'early'], answer: 'ago', explain: 'كلمة ago تأتي في نهاية الجملة بمعنى (مضت / قبل).' },
+            { topic: 'الشهور والوقت (Months & Time)', prompt: 'What .................... does your school start?', hint: 'في أي وقت تبدأ مدرستك؟ 🕗', options: ['time', 'calendar', 'ago'], answer: 'time', explain: 'نسأل عن الوقت بـ What time.' },
+
+            // From Image 6: Complete Months of the Year
+            { topic: 'شهور السنة (Months)', prompt: '.................... is the hottest month in the year.', hint: 'أشد شهور السنة حرارة (الصيف) ☀️', options: ['August', 'February', 'January'], answer: 'August', explain: 'شهر أغسطس (August) هو أحر شهور السنة.' },
+            { topic: 'شهور السنة (Months)', prompt: '.................... is the shortest month in the year.', hint: 'أقصر شهر في السنة (28 أو 29 يوماً) 📅', options: ['February', 'April', 'September'], answer: 'February', explain: 'شهر فبراير (February) هو أقصر شهور السنة.' },
+            { topic: 'شهور السنة (Months)', prompt: '.................... is the first month in the year.', hint: 'الشهر الأول في السنة الميلادية 🎉', options: ['January', 'December', 'March'], answer: 'January', explain: 'شهر يناير (January) هو أول شهور السنة.' },
+            { topic: 'شهور السنة (Months)', prompt: '.................... is the 4th month in the year.', hint: 'الشهر الرابع (4) في السنة 4️⃣', options: ['April', 'May', 'June'], answer: 'April', explain: 'الترتيب الرابع في الشهور هو إبريل (April).' },
+            { topic: 'شهور السنة (Months)', prompt: '.................... has our Saudi National Day.', hint: 'الشهر الذي يوافق اليوم الوطني السعودي (23 سبتمبر) 🇸🇦', options: ['September', 'August', 'January'], answer: 'September', explain: 'اليوم الوطني السعودي في شهر سبتمبر (September).' },
+
+            // From Image 2: Vocabulary & Extra Words
+            { topic: 'المفردات (Vocabulary)', prompt: 'What is the English word for "أسد" 🦁?', hint: 'ملك الغابة 🦁', options: ['lion', 'snail', 'mountain'], answer: 'lion', explain: 'كلمة lion تعني أسد.' },
+            { topic: 'المفردات (Vocabulary)', prompt: 'What is the English word for "حلزون" 🐌?', hint: 'حيوان بطيء يحمل صدفة 🐌', options: ['snail', 'rainbow', 'tall'], answer: 'snail', explain: 'كلمة snail تعني حلزون.' },
+            { topic: 'المفردات (Vocabulary)', prompt: 'What does the word "tired" 😫 mean in Arabic?', hint: 'شعور بعد مجهود طويل 😫', options: ['متعب', 'طويل', 'جبل'], answer: 'متعب', explain: 'كلمة tired تعني متعب.' },
+            { topic: 'المفردات (Vocabulary)', prompt: 'What is the English word for "قصة مصورة" 📖?', hint: 'كتاب رسوم وقصص 📖', options: ['comic book', 'rainbow', 'mountain'], answer: 'comic book', explain: 'comic book تعني قصة مصورة.' },
+            { topic: 'المفردات (Vocabulary)', prompt: 'What is the English word for "قوس قزح" 🌈?', hint: 'يظهر في السماء بألوان جميلة بعد المطر 🌈', options: ['rainbow', 'mountain', 'through'], answer: 'rainbow', explain: 'كلمة rainbow تعني قوس قزح.' },
+            { topic: 'المفردات (Vocabulary)', prompt: 'What is the English word for "جبل" ⛰️?', hint: 'قمة عالية في الطبيعة ⛰️', options: ['mountain', 'tall', 'fear'], answer: 'mountain', explain: 'كلمة mountain تعني جبل.' },
+            { topic: 'المفردات (Vocabulary)', prompt: 'What does "Have fun" 🎈 mean in Arabic?', hint: 'كلمات إضافية (Extra words) 🎈', options: ['يستمتع', 'يبتكر', 'خوف'], answer: 'يستمتع', explain: 'Have fun تعني يستمتع.' },
+            { topic: 'المفردات (Vocabulary)', prompt: 'What is the English word for "يبتكر" 💡?', hint: 'يصنع فكرة جديدة 💡', options: ['Create', 'Learn', 'Fear'], answer: 'Create', explain: 'كلمة Create تعني يبتكر.' },
+            { topic: 'المفردات (Vocabulary)', prompt: 'What does "Prepared" 📋 mean in Arabic?', hint: 'أكمل الاستعداد والتجهيز 📋', options: ['أعد - جهز', 'خلال', 'يتعلم'], answer: 'أعد - جهز', explain: 'كلمة Prepared تعني أعد أو جهز.' },
+            { topic: 'المفردات (Vocabulary)', prompt: 'What is the English word for "خوف" 👻?', hint: 'شعور بالرهبة 👻', options: ['Fear', 'Through', 'Learn'], answer: 'Fear', explain: 'كلمة Fear تعني خوف.' },
+
+            // From Image 5: Regular & Irregular Verbs V1/V2
+            { topic: 'الأفعال (Regular & Irregular Verbs)', prompt: 'What is the past form (V2) of "treat" (يعامل) 🤝?', hint: 'فعل منتظم (Regular verb)', options: ['treated', 'trote', 'treats'], answer: 'treated', explain: 'الفعل treat منتظم، ماضيه treated.' },
+            { topic: 'الأفعال (Regular & Irregular Verbs)', prompt: 'What is the past form (V2) of "fall" (يسقط) 🍂?', hint: 'فعل غير منتظم (Irregular verb)', options: ['fell', 'falled', 'fallen'], answer: 'fell', explain: 'الماضي من الفعل fall هو fell.' },
+            { topic: 'الأفعال (Regular & Irregular Verbs)', prompt: 'What is the past form (V2) of "love" (يحب) ❤️?', hint: 'فعل منتظم ينتهي بحرف e', options: ['loved', 'loves', 'loving'], answer: 'loved', explain: 'الماضي من love هو loved.' },
+
+            // From Image 3, 7 & 8: Numbers 1 to 1000
+            { topic: 'الأرقام (Numbers 1-1000)', prompt: 'Choose the correct number for: "seven hundred ninety-five"', hint: 'سبعمائة وخمسة وتسعون 🔢', options: ['795', '508', '421'], answer: '795', explain: 'seven hundred (700) + ninety-five (95) = 795.' },
+            { topic: 'الأرقام (Numbers 1-1000)', prompt: 'Choose the correct number for: "five hundred eight"', hint: 'خمسمائة وثمانية 🔢', options: ['508', '580', '805'], answer: '508', explain: 'five hundred (500) + eight (8) = 508.' },
+            { topic: 'الأرقام (Numbers 1-1000)', prompt: 'Choose the correct number for: "one hundred thirty-two"', hint: 'مائة واثنان وثلاثون 🔢', options: ['132', '123', '321'], answer: '132', explain: 'one hundred (100) + thirty-two (32) = 132.' },
+            { topic: 'الأرقام (Numbers 1-1000)', prompt: 'Choose the correct number for: "four hundred twenty-one"', hint: 'أربعمائة وواحد وعشرون 🔢', options: ['421', '412', '241'], answer: '421', explain: 'four hundred (400) + twenty-one (21) = 421.' },
+            { topic: 'الأرقام (Numbers 1-1000)', prompt: 'Choose the correct word for the number: "1,000"', hint: 'ألف 🔢', options: ['One thousand', 'One hundred', 'Ten hundred'], answer: 'One thousand', explain: 'الرقم 1000 بالإنجليزية هو One thousand.' },
+            { topic: 'الأرقام (Numbers 1-1000)', prompt: 'Choose the correct number for: "eight hundred sixty-eight"', hint: 'ثمانمائة وثمانية وستون 🔢', options: ['868', '886', '688'], answer: '868', explain: 'eight hundred (800) + sixty-eight (68) = 868.' }
+        ];
+
+        circleRawData.forEach((item, idx) => {
+            questions.push({
+                id: idx + 1,
+                type: 'circle',
+                topic: item.topic,
+                prompt: item.prompt,
+                hint: item.hint,
+                options: item.options,
+                answer: item.answer,
+                explain: item.explain
+            });
+        });
+
+        // --- SECTION 2: رتب الحروف لتكوين الكلمة الصحيحة (Q61 to Q95 - 35 Questions) ---
+        const lettersRawData = [
+            // Vocabulary & Extra Words (Image 2)
+            { topic: 'المفردات (Vocabulary)', word: 'lion', ar: 'أسد 🦁', hint: 'حيوان مفترس (4 حروف)' },
+            { topic: 'المفردات (Vocabulary)', word: 'snail', ar: 'حلزون 🐌', hint: 'حيوان بطيء يحمل قوقعة (5 حروف)' },
+            { topic: 'المفردات (Vocabulary)', word: 'tired', ar: 'متعب 😫', hint: 'يشعر بالإرهاق (5 حروف)' },
+            { topic: 'المفردات (Vocabulary)', word: 'tall', ar: 'طويل 🦒', hint: 'عكس قصير (4 حروف)' },
+            { topic: 'المفردات (Vocabulary)', word: 'rainbow', ar: 'قوس قزح 🌈', hint: 'ألوان الطيف في السماء (7 حروف)' },
+            { topic: 'المفردات (Vocabulary)', word: 'mountain', ar: 'جبل ⛰️', hint: 'مرتفع صخري شاهق (8 حروف)' },
+            { topic: 'المفردات (Vocabulary)', word: 'learn', ar: 'يتعلم 📖', hint: 'يكتسب علماً (5 حروف)' },
+            { topic: 'المفردات (Vocabulary)', word: 'through', ar: 'خلال ➡️', hint: 'عبر أو من خلال (7 حروف)' },
+            { topic: 'المفردات (Vocabulary)', word: 'fear', ar: 'خوف 👻', hint: 'شعور بالرهبة (4 حروف)' },
+            { topic: 'المفردات (Vocabulary)', word: 'create', ar: 'يبتكر 💡', hint: 'يبدع أو يصنع (6 حروف)' },
+            { topic: 'المفردات (Vocabulary)', word: 'prepared', ar: 'أعد / جهز 📋', hint: 'مستعد أو جاهز (8 حروف)' },
+
+            // Months of the year (Image 6)
+            { topic: 'شهور السنة (Months)', word: 'January', ar: 'يناير (الشهر 1) 🎉', hint: 'أول شهور السنة' },
+            { topic: 'شهور السنة (Months)', word: 'February', ar: 'فبراير (الشهر 2) 📅', hint: 'أقصر شهور السنة' },
+            { topic: 'شهور السنة (Months)', word: 'March', ar: 'مارس (الشهر 3) 🌸', hint: 'الشهر الثالث في السنة' },
+            { topic: 'شهور السنة (Months)', word: 'April', ar: 'أبريل (الشهر 4) 4️⃣', hint: 'الشهر الرابع في السنة' },
+            { topic: 'شهور السنة (Months)', word: 'May', ar: 'مايو (الشهر 5) 🌤️', hint: 'الشهر الخامس (3 حروف)' },
+            { topic: 'شهور السنة (Months)', word: 'June', ar: 'يونيو (الشهر 6) ☀️', hint: 'الشهر السادس في السنة' },
+            { topic: 'شهور السنة (Months)', word: 'July', ar: 'يوليو (الشهر 7) 🏖️', hint: 'الشهر السابع في السنة' },
+            { topic: 'شهور السنة (Months)', word: 'August', ar: 'أغسطس (الشهر 8) 🔥', hint: 'أحر شهور السنة' },
+            { topic: 'شهور السنة (Months)', word: 'October', ar: 'أكتوبر (الشهر 10) 🍂', hint: 'الشهر العاشر في السنة' },
+
+            // Verbs in Past Simple (Image 5)
+            { topic: 'الأفعال في الماضي (Past Verbs)', word: 'arrived', ar: 'وصل ✈️', hint: 'ماضي الفعل arrive' },
+            { topic: 'الأفعال في الماضي (Past Verbs)', word: 'treated', ar: 'عامل 🤝', hint: 'ماضي الفعل treat' },
+            { topic: 'الأفعال في الماضي (Past Verbs)', word: 'stayed', ar: 'بقي 🏠', hint: 'ماضي الفعل stay' },
+            { topic: 'الأفعال في الماضي (Past Verbs)', word: 'bought', ar: 'اشترى 🛍️', hint: 'ماضي الفعل buy' },
+            { topic: 'الأفعال في الماضي (Past Verbs)', word: 'drank', ar: 'شرب 🥤', hint: 'ماضي الفعل drink' },
+            { topic: 'الأفعال في الماضي (Past Verbs)', word: 'took', ar: 'أخذ 🎁', hint: 'ماضي الفعل take' },
+            { topic: 'الأفعال في الماضي (Past Verbs)', word: 'went', ar: 'ذهب 🏃', hint: 'ماضي الفعل go' },
+            { topic: 'الأفعال في الماضي (Past Verbs)', word: 'made', ar: 'صنع 🛠️', hint: 'ماضي الفعل make' },
+
+            // Superlatives & Numbers (Image 1 & 8)
+            { topic: 'صيغة التفضيل (Superlatives)', word: 'fastest', ar: 'الأسرع 🐆', hint: 'التفضيل من fast' },
+            { topic: 'صيغة التفضيل (Superlatives)', word: 'smallest', ar: 'الأصغر 📦', hint: 'التفضيل من small' },
+            { topic: 'صيغة التفضيل (Superlatives)', word: 'best', ar: 'الأفضل 👑', hint: 'التفضيل من good' },
+            { topic: 'الأرقام (Numbers)', word: 'twenty', ar: 'عشرون (20) 🔢', hint: 'العدد 20 بالحروف' },
+            { topic: 'الأرقام (Numbers)', word: 'forty', ar: 'أربعون (40) 🔢', hint: 'العدد 40 بالحروف (انتبه لإملائها بدون u)' },
+            { topic: 'الأرقام (Numbers)', word: 'hundred', ar: 'مائة (100) 💯', hint: 'كلمة مائة بالإنجليزية' },
+            { topic: 'الأرقام (Numbers)', word: 'thousand', ar: 'ألف (1000) 🔢', hint: 'كلمة ألف بالإنجليزية' }
+        ];
+
+        function scrambleString(str) {
+            const arr = str.split('');
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor((i * 7 + 3) % (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            if (arr.join('') === str) {
+                arr.reverse();
+            }
+            return arr;
+        }
+
+        lettersRawData.forEach((item, idx) => {
+            questions.push({
+                id: 61 + idx,
+                type: 'letters',
+                topic: item.topic,
+                word: item.word,
+                ar: item.ar,
+                hint: item.hint,
+                scrambled: scrambleString(item.word),
+                explain: `الترتيب الصحيح لحروف كلمة (${item.ar}) هو: ${item.word}`
+            });
+        });
+
+        // --- SECTION 3: رتب الكلمات لتكوين جملة أو ترتيب صحيح (Q96 to Q130 - 35 Questions) ---
+        const wordsRawData = [
+            // Image 1: Make a question & Superlative sentences
+            { topic: 'صيغة التفضيل (Superlatives)', ar: 'رتب الكلمات لتكوين سؤال صحيح (من ورقة العمل): ما هي أسهل حصة بالنسبة لك؟', words: ['What', 'is', 'the easiest class', 'for', 'you?'] },
+            { topic: 'صيغة التفضيل (Superlatives)', ar: 'رتب الكلمات لتكوين سؤال صحيح: من هو أذكى شخص تعرفه؟', words: ['Who', 'is', 'the most', 'intelligent person', 'you know?'] },
+            { topic: 'صيغة التفضيل (Superlatives)', ar: 'رتب الجملة: هذا هو أفضل كتاب.', words: ['This', 'is', 'the', 'best', 'book.'] },
+            { topic: 'صيغة التفضيل (Superlatives)', ar: 'رتب الجملة: هو أظرف ولد في المجموعة.', words: ['He', 'is', 'the funniest', 'boy', 'in the group.'] },
+            { topic: 'صيغة التفضيل (Superlatives)', ar: 'رتب الجملة: الشتاء هو أبرد فصل في السنة.', words: ['Winter', 'is', 'the coldest', 'season', 'in the year.'] },
+            { topic: 'صيغة التفضيل (Superlatives)', ar: 'رتب الجملة: هذه القصة هي القصة الأكثر تشويقاً.', words: ['This story', 'is', 'the', 'most interesting', 'story.'] },
+            { topic: 'صيغة التفضيل (Superlatives)', ar: 'رتب الجملة: الحوت الأزرق هو أضخم حيوان في البحر.', words: ['The blue whale', 'is', 'the largest', 'animal', 'in the sea.'] },
+            { topic: 'صيغة التفضيل (Superlatives)', ar: 'رتب الجملة: الفهد هو أسرع حيوان على اليابسة.', words: ['The cheetah', 'is', 'the fastest', 'animal', 'on land.'] },
+            { topic: 'صيغة التفضيل (Superlatives)', ar: 'رتب الجملة: هذه أجمل لوحة في المتحف.', words: ['This', 'is', 'the most beautiful', 'painting', 'in the museum.'] },
+
+            // Image 4: Past Simple Sentences
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: استيقظت مبكراً بالأمس.', words: ['She', 'woke up', 'early', 'yesterday.'] },
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: لم نتناول الإفطار الساعة الثامنة هذا الصباح.', words: ['We', "didn't", 'have', 'breakfast', 'this morning.'] },
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: ذهب إلى الحديقة الجمعة الماضية.', words: ['He', 'went', 'to the park', 'last Friday.'] },
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: اشتروا سيارة جديدة قبل سنتين.', words: ['They', 'bought', 'a new car', '2 years ago.'] },
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: شاهدت فيلماً رائعاً الليلة الماضية.', words: ['I', 'saw', 'a great movie', 'last night.'] },
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: صنعت أمي كعكة بالأمس.', words: ['My mother', 'made', 'a cake', 'yesterday.'] },
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: التقطنا صوراً كثيرة في رحلتنا.', words: ['We', 'took', 'many photos', 'on our trip.'] },
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: قابل أصدقاءه في المقهى قبل 3 أيام.', words: ['He', 'met', 'his friends', 'at the café', '3 days ago.'] },
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: لم تأكل الأرز والدجاج الجمعة الماضية.', words: ['She', "didn't", 'eat', 'rice and chicken', 'last Friday.'] },
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: قرأ عمر قصة مصورة الليلة الماضية.', words: ['Omar', 'read', 'a comic book', 'last night.'] },
+            { topic: 'الماضي البسيط (Past Simple)', ar: 'رتب الجملة: حصلت على هدية في عيد ميلادها الماضي.', words: ['She', 'got', 'a gift', 'on her last birthday.'] },
+
+            // Image 6: Arrange the months of the year in the correct order
+            { topic: 'ترتيب الشهور (Months Order)', ar: 'رتب الشهور الأربعة الأولى من السنة (من 1 إلى 4):', words: ['January', 'February', 'March', 'April'] },
+            { topic: 'ترتيب الشهور (Months Order)', ar: 'رتب شهور وسط السنة بالترتيب الصحيح (من 5 إلى 8):', words: ['May', 'June', 'July', 'August'] },
+            { topic: 'ترتيب الشهور (Months Order)', ar: 'رتب الشهور الأربعة الأخيرة من السنة (من 9 إلى 12):', words: ['September', 'October', 'November', 'December'] },
+            { topic: 'شهور السنة (Months)', ar: 'رتب الجملة: أغسطس هو أحر شهر في السنة.', words: ['August', 'is', 'the hottest', 'month', 'in the year.'] },
+            { topic: 'شهور السنة (Months)', ar: 'رتب الجملة: فبراير هو أقصر شهر في السنة.', words: ['February', 'is', 'the shortest', 'month', 'in the year.'] },
+            { topic: 'شهور السنة (Months)', ar: 'رتب الجملة: سبتمبر فيه يومنا الوطني 🇸🇦.', words: ['September', 'has', 'our', 'national', 'day.'] },
+
+            // Image 7: Write the numbers in words (864, 325, 670, 903, 127) + Time questions
+            { topic: 'كتابة الأرقام بالكلمات (Numbers in Words)', ar: 'رتب الكلمات لكتابة الرقم (864) بالحروف:', words: ['eight', 'hundred', 'sixty-four'] },
+            { topic: 'كتابة الأرقام بالكلمات (Numbers in Words)', ar: 'رتب الكلمات لكتابة الرقم (325) بالحروف:', words: ['three', 'hundred', 'twenty-five'] },
+            { topic: 'كتابة الأرقام بالكلمات (Numbers in Words)', ar: 'رتب الكلمات لكتابة الرقم (670) بالحروف:', words: ['six', 'hundred', 'seventy'] },
+            { topic: 'كتابة الأرقام بالكلمات (Numbers in Words)', ar: 'رتب الكلمات لكتابة الرقم (903) بالحروف:', words: ['nine', 'hundred', 'three'] },
+            { topic: 'كتابة الأرقام بالكلمات (Numbers in Words)', ar: 'رتب الكلمات لكتابة الرقم (127) بالحروف:', words: ['one', 'hundred', 'twenty-seven'] },
+            { topic: 'كتابة الأرقام بالكلمات (Numbers in Words)', ar: 'رتب الكلمات لكتابة الرقم (795) بالحروف:', words: ['seven', 'hundred', 'ninety-five'] },
+            { topic: 'الشهور والوقت (Months & Time)', ar: 'رتب الجملة: حددت يوم ميلادي على التقويم.', words: ['I marked', 'my birthday', 'on', 'the calendar.'] },
+            { topic: 'الشهور والوقت (Months & Time)', ar: 'رتب السؤال: كم تستغرق رحلتك إلى المدرسة؟', words: ['How long', 'is', 'your journey', 'to school?'] },
+            { topic: 'الشهور والوقت (Months & Time)', ar: 'رتب السؤال: في أي وقت تبدأ مدرستك؟', words: ['What time', 'does', 'your school', 'start?'] }
+        ];
+
+        function shuffleArrayDeterministic(arr, seed) {
+            const copy = [...arr];
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = (seed + i * 5) % (i + 1);
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            if (copy.join(' ') === arr.join(' ') && copy.length > 1) {
+                copy.reverse();
+            }
+            return copy;
+        }
+
+        wordsRawData.forEach((item, idx) => {
+            questions.push({
+                id: 96 + idx,
+                type: 'words',
+                topic: item.topic,
+                ar: item.ar,
+                words: item.words,
+                shuffledWords: shuffleArrayDeterministic(item.words, idx + 11),
+                explain: `الترتيب الصحيح هو: ${item.words.join(' ')}`
+            });
+        });
+
+        // --- SECTION 4: وصّل العمود الأول بما يناسبه في العمود الثاني (Q131 to Q155 - 25 Questions) ---
+        const matchRawData = [
+            // Image 2: Vocabulary Match
+            {
+                topic: 'توصيل المفردات (Vocabulary Match)',
+                title: 'وصّل الكلمة الإنجليزية بمعناها العربي الصحيح (المجموعة 1):',
+                pairs: [
+                    { left: 'lion 🦁', right: 'أسد' },
+                    { left: 'snail 🐌', right: 'حلزون' },
+                    { left: 'tired 😫', right: 'متعب' },
+                    { left: 'tall 🦒', right: 'طويل' }
+                ]
+            },
+            {
+                topic: 'توصيل المفردات (Vocabulary Match)',
+                title: 'وصّل الكلمة الإنجليزية بمعناها العربي الصحيح (المجموعة 2):',
+                pairs: [
+                    { left: 'comic book 📖', right: 'قصة مصورة' },
+                    { left: 'rainbow 🌈', right: 'قوس قزح' },
+                    { left: 'mountain ⛰️', right: 'جبل' },
+                    { left: 'Learn 📚', right: 'يتعلم' }
+                ]
+            },
+            {
+                topic: 'توصيل الكلمات الإضافية (Extra Words)',
+                title: 'وصّل الكلمات الإضافية بمعناها الصحيح:',
+                pairs: [
+                    { left: 'Have fun 🎈', right: 'يستمتع' },
+                    { left: 'Through ➡️', right: 'خلال' },
+                    { left: 'Fear 👻', right: 'خوف' },
+                    { left: 'Create 💡', right: 'يبتكر' },
+                    { left: 'Prepared 📋', right: 'أعد - جهز' }
+                ]
+            },
+            // Image 3: Look, read, and match numbers
+            {
+                topic: 'توصيل الأرقام (Numbers Match)',
+                title: 'وصّل الأرقام المكتوبة بالحروف بالرقم الصحيح (ورقة العمل 3):',
+                pairs: [
+                    { left: 'one hundred thirty-two', right: '132' },
+                    { left: 'four hundred twenty-one', right: '421' },
+                    { left: 'seven hundred ninety-five', right: '795' },
+                    { left: 'one thousand', right: '1,000' },
+                    { left: 'five hundred eight', right: '508' }
+                ]
+            },
+            // Image 7: Match Numbers
+            {
+                topic: 'توصيل الأرقام (Numbers Match)',
+                title: 'وصّل الأرقام المكتوبة بالحروف بالرقم الصحيح (ورقة العمل 7):',
+                pairs: [
+                    { left: 'three hundred fifty one', right: '351' },
+                    { left: 'One thousand', right: '1000' },
+                    { left: 'Nine hundred seventy five', right: '975' },
+                    { left: 'eight hundred sixty eight', right: '868' },
+                    { left: 'Two hundred one', right: '201' }
+                ]
+            },
+            {
+                topic: 'توصيل الأرقام (Numbers Match)',
+                title: 'وصّل الأرقام من قسم (Write the numbers in words):',
+                pairs: [
+                    { left: 'eight hundred sixty-four', right: '864' },
+                    { left: 'three hundred twenty-five', right: '325' },
+                    { left: 'six hundred seventy', right: '670' },
+                    { left: 'nine hundred three', right: '903' },
+                    { left: 'one hundred twenty-seven', right: '127' }
+                ]
+            },
+            // Image 5: Regular Verbs V1 -> V2
+            {
+                topic: 'توصيل الأفعال المنتظمة (Regular Verbs)',
+                title: 'وصّل الفعل المضارع (V1) بالماضي المنتظم (V2):',
+                pairs: [
+                    { left: 'arrive (يصل)', right: 'arrived (وصل)' },
+                    { left: 'treat (يعامل)', right: 'treated (عامل)' },
+                    { left: 'love (يحب)', right: 'loved (أحبّ)' },
+                    { left: 'stay (يبقى)', right: 'stayed (بقي)' }
+                ]
+            },
+            // Image 5: Irregular Verbs V1 -> V2 (Part 1)
+            {
+                topic: 'توصيل الأفعال غير المنتظمة (Irregular Verbs)',
+                title: 'وصّل الفعل المضارع (V1) بالماضي غير المنتظم (V2) - المجموعة 1:',
+                pairs: [
+                    { left: 'be (am / is / are)', right: 'was / were' },
+                    { left: 'eat (يأكل) 🍎', right: 'ate (أكل)' },
+                    { left: 'see (يرى) 👁️', right: 'saw (رأى)' },
+                    { left: 'meet (يقابل) 🤝', right: 'met (قابل)' }
+                ]
+            },
+            // Image 5: Irregular Verbs V1 -> V2 (Part 2)
+            {
+                topic: 'توصيل الأفعال غير المنتظمة (Irregular Verbs)',
+                title: 'وصّل الفعل المضارع (V1) بالماضي غير المنتظم (V2) - المجموعة 2:',
+                pairs: [
+                    { left: 'fall (يسقط) 🍂', right: 'fell (سقط)' },
+                    { left: 'drink (يشرب) 🥤', right: 'drank (شرب)' },
+                    { left: 'go (يذهب) 🏃', right: 'went (ذهب)' },
+                    { left: 'take (يأخذ) 🎁', right: 'took (أخذ)' }
+                ]
+            },
+            // Image 5: Irregular Verbs V1 -> V2 (Part 3)
+            {
+                topic: 'توصيل الأفعال غير المنتظمة (Irregular Verbs)',
+                title: 'وصّل الفعل المضارع (V1) بالماضي غير المنتظم (V2) - المجموعة 3:',
+                pairs: [
+                    { left: 'buy (يشتري) 🛍️', right: 'bought (اشترى)' },
+                    { left: 'make (يصنع) 🛠️', right: 'made (صنع)' },
+                    { left: 'have (يملك) 🔑', right: 'had (ملك)' },
+                    { left: 'wake up (يستيقظ) ⏰', right: 'woke up (استيقظ)' },
+                    { left: 'get (يحصل على) 🏆', right: 'got (حصل على)' }
+                ]
+            },
+            // Image 5: Verbs English to Arabic Meaning (Part 1)
+            {
+                topic: 'معاني الأفعال (Verbs Meaning)',
+                title: 'وصّل الفعل الإنجليزي بمعناه باللغة العربية (المجموعة 1):',
+                pairs: [
+                    { left: 'arrive ✈️', right: 'يصل' },
+                    { left: 'treat 🤝', right: 'يعامل' },
+                    { left: 'fall 🍂', right: 'يسقط' },
+                    { left: 'meet 👥', right: 'يقابل' }
+                ]
+            },
+            // Image 5: Verbs English to Arabic Meaning (Part 2)
+            {
+                topic: 'معاني الأفعال (Verbs Meaning)',
+                title: 'وصّل الفعل الإنجليزي بمعناه باللغة العربية (المجموعة 2):',
+                pairs: [
+                    { left: 'wake up ⏰', right: 'يستيقظ' },
+                    { left: 'buy 🛍️', right: 'يشتري' },
+                    { left: 'make 🛠️', right: 'يصنع' },
+                    { left: 'get 🏆', right: 'يحصل على' }
+                ]
+            },
+            // Image 1: Adjective to Superlative Form
+            {
+                topic: 'صيغة التفضيل (Superlatives)',
+                title: 'وصّل الصفة بصيغة التفضيل العليا (Superlative) الصحيحة (المجموعة 1):',
+                pairs: [
+                    { left: 'good ⭐', right: 'the best' },
+                    { left: 'bad ⚠️', right: 'the worst' },
+                    { left: 'funny 😄', right: 'the funniest' },
+                    { left: 'cold ❄️', right: 'the coldest' }
+                ]
+            },
+            {
+                topic: 'صيغة التفضيل (Superlatives)',
+                title: 'وصّل الصفة بصيغة التفضيل العليا (Superlative) الصحيحة (المجموعة 2):',
+                pairs: [
+                    { left: 'interesting 📖', right: 'the most interesting' },
+                    { left: 'difficult 🧮', right: 'the most difficult' },
+                    { left: 'beautiful 🖼️', right: 'the most beautiful' },
+                    { left: 'large 🐋', right: 'the largest' }
+                ]
+            },
+            {
+                topic: 'صيغة التفضيل (Superlatives)',
+                title: 'وصّل جملة التفضيل بالكلمة المفقودة المناسبة لها:',
+                pairs: [
+                    { left: 'The cheetah is the ... animal', right: 'fastest 🐆' },
+                    { left: 'The blue whale is the ... animal', right: 'largest 🐋' },
+                    { left: 'Winter is the ... season', right: 'coldest ⛄' },
+                    { left: 'This is the ... box in the shop', right: 'smallest 📦' }
+                ]
+            },
+            // Image 6: Months Order & Descriptions
+            {
+                topic: 'شهور السنة (Months)',
+                title: 'وصّل كل شهر بترتيبه الصحيح في السنة الميلادية (1 - 4):',
+                pairs: [
+                    { left: 'January', right: 'الشهر الأول (1st)' },
+                    { left: 'February', right: 'الشهر الثاني (2nd)' },
+                    { left: 'March', right: 'الشهر الثالث (3rd)' },
+                    { left: 'April', right: 'الشهر الرابع (4th)' }
+                ]
+            },
+            {
+                topic: 'شهور السنة (Months)',
+                title: 'وصّل كل شهر بترتيبه الصحيح في السنة الميلادية (5 - 8):',
+                pairs: [
+                    { left: 'May', right: 'الشهر الخامس (5th)' },
+                    { left: 'June', right: 'الشهر السادس (6th)' },
+                    { left: 'July', right: 'الشهر السابع (7th)' },
+                    { left: 'August', right: 'الشهر الثامن (8th)' }
+                ]
+            },
+            {
+                topic: 'شهور السنة (Months)',
+                title: 'وصّل كل شهر بترتيبه الصحيح في السنة الميلادية (9 - 12):',
+                pairs: [
+                    { left: 'September', right: 'الشهر التاسع (9th)' },
+                    { left: 'October', right: 'الشهر العاشر (10th)' },
+                    { left: 'November', right: 'الشهر الحادي عشر (11th)' },
+                    { left: 'December', right: 'الشهر الثاني عشر (12th)' }
+                ]
+            },
+            {
+                topic: 'شهور السنة (Months)',
+                title: 'وصّل كل شهر بالمعلومة التي تميزه (من ورقة العمل):',
+                pairs: [
+                    { left: 'August ☀️', right: 'the hottest month in the year' },
+                    { left: 'February 📅', right: 'the shortest month in the year' },
+                    { left: 'January 🎉', right: 'the first month in the year' },
+                    { left: 'September 🇸🇦', right: 'has our national day' }
+                ]
+            },
+            // Image 8: Numbers Chart (1-19, Tens, Hundreds)
+            {
+                topic: 'الأرقام (Numbers 1-10)',
+                title: 'وصّل الأرقام الأساسية من (1 إلى 9) بكتابتها الصحيحة:',
+                pairs: [
+                    { left: 'Three', right: '3' },
+                    { left: 'Five', right: '5' },
+                    { left: 'Seven', right: '7' },
+                    { left: 'Nine', right: '9' }
+                ]
+            },
+            {
+                topic: 'الأرقام (Numbers 11-19)',
+                title: 'وصّل الأرقام من (11 إلى 19) بكتابتها الصحيحة (ورقة الأرقام):',
+                pairs: [
+                    { left: 'eleven', right: '11' },
+                    { left: 'Twelve', right: '12' },
+                    { left: 'Fifteen', right: '15' },
+                    { left: 'eighteen', right: '18' }
+                ]
+            },
+            {
+                topic: 'الأرقام (Numbers 13-19)',
+                title: 'وصّل الأرقام المنتهية بـ (teen) بالرقم الصحيح:',
+                pairs: [
+                    { left: 'Thirteen', right: '13' },
+                    { left: 'Fourteen', right: '14' },
+                    { left: 'Sixteen', right: '16' },
+                    { left: 'nineteen', right: '19' }
+                ]
+            },
+            {
+                topic: 'أرقام العشرات (Tens 10-90)',
+                title: 'وصّل أرقام العشرات بالرقم الصحيح:',
+                pairs: [
+                    { left: 'Twenty', right: '20' },
+                    { left: 'Thirty', right: '30' },
+                    { left: 'Forty', right: '40' },
+                    { left: 'Fifty', right: '50' }
+                ]
+            },
+            {
+                topic: 'أرقام العشرات والمئات (Tens & Hundreds)',
+                title: 'وصّل أرقام العشرات والمئات بالرقم الصحيح:',
+                pairs: [
+                    { left: 'Sixty', right: '60' },
+                    { left: 'seventy', right: '70' },
+                    { left: 'eighty', right: '80' },
+                    { left: 'ninety', right: '90' }
+                ]
+            },
+            {
+                topic: 'أرقام المئات (Hundreds 100-1000)',
+                title: 'وصّل أرقام المئات والألف بالرقم الصحيح:',
+                pairs: [
+                    { left: 'Two hundred', right: '200' },
+                    { left: 'Four hundred', right: '400' },
+                    { left: 'seven hundred', right: '700' },
+                    { left: 'One thousand', right: '1000' }
+                ]
+            }
+        ];
+
+        matchRawData.forEach((item, idx) => {
+            const rightItems = item.pairs.map(p => p.right);
+            questions.push({
+                id: 131 + idx,
+                type: 'match',
+                topic: item.topic,
+                title: item.title,
+                pairs: item.pairs,
+                shuffledRights: shuffleArrayDeterministic(rightItems, idx + 7),
+                explain: 'تم توصيل جميع عناصر العمود الأول بما يناسبها في العمود الثاني.'
+            });
+        });
+
+        // ============================================================================
+        // STATE MANAGEMENT
+        // ============================================================================
+        let currentIndex = 0; // 0 to 154
+        let instantFeedback = true;
+        let boardFilter = 'all'; // 'all', 'unanswered', 'answered', 'flagged'
+
+        // Student Answers Store: key = question.id (1..155)
+        // Value: { answered: bool, isCorrect: bool, userValue: any, flagged: bool }
+        const userState = {};
+        questions.forEach(q => {
+            userState[q.id] = {
+                answered: false,
+                isCorrect: false,
+                userValue: null,
+                flagged: false
+            };
+        });
+
+        // Temporary interaction state for active question (letters, words, matching)
+        let activeLetterIndices = [];
+        let activeWordIndices = [];
+        let selectedMatchLeftIdx = null;
+        let currentMatchConnections = {}; // { leftIdx: rightValue }
+
+        // Web Audio API Simple Sound Effects
+        let audioCtx = null;
+        function playTone(type) {
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                const now = audioCtx.currentTime;
+                if (type === 'correct') {
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+                    osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.setValueAtTime(180, now + 0.12);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'click') {
+                    osc.frequency.setValueAtTime(440, now);
+                    gain.gain.setValueAtTime(0.05, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+                    osc.start(now);
+                    osc.stop(now + 0.06);
+                }
+            } catch (e) {
+                // Ignore audio errors if blocked
+            }
+        }
+
+        // Speech Synthesis for English Text
+        function speakText(text) {
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            const clean = text.replace(/\.+/g, ' blank ').replace(/[^\w\s\?'!,-]/g, '');
+            const utter = new SpeechSynthesisUtterance(clean);
+            utter.lang = 'en-US';
+            utter.rate = 0.9;
+            window.speechSynthesis.speak(utter);
+        }
+
+        function speakCurrentQuestion() {
+            const q = questions[currentIndex];
+            if (q.type === 'circle') speakText(q.prompt);
+            else if (q.type === 'letters') speakText(q.word);
+            else if (q.type === 'words') speakText(q.words.join(' '));
+            else if (q.type === 'match') speakText(q.pairs.map(p => p.left).join(', '));
+        }
+
+        // ============================================================================
+        // RENDER CURRENT QUESTION
+        // ============================================================================
+        function loadQuestion(index) {
+            if (index < 0 || index >= questions.length) return;
+            currentIndex = index;
+            const q = questions[currentIndex];
+            const st = userState[q.id];
+
+            // Reset temp state or restore from saved userValue
+            selectedMatchLeftIdx = null;
+            if (q.type === 'letters') {
+                activeLetterIndices = st.userValue ? [...st.userValue] : [];
+            } else if (q.type === 'words') {
+                activeWordIndices = st.userValue ? [...st.userValue] : [];
+            } else if (q.type === 'match') {
+                currentMatchConnections = st.userValue ? { ...st.userValue } : {};
+            }
+
+            // Update Header Badges
+            document.getElementById('q-number-badge').textContent = q.id;
+            document.getElementById('q-topic-badge').textContent = q.topic;
+
+            const typeLabels = {
+                circle: { badge: 'ضع دائرة حول الإجابة الصحيحة (1-60)', inst: 'انقر على الإجابة الصحيحة لرسم دائرة حولها:', color: 'from-rose-600 via-rose-600 to-pink-700' },
+                letters: { badge: 'رتب الحروف لتكوين الكلمة (61-95)', inst: 'اضغط على الحروف المبعثرة بالترتيب الصحيح لتكوين الكلمة:', color: 'from-amber-600 via-orange-600 to-amber-700' },
+                words: { badge: 'رتب الكلمات لتكوين جملة (96-130)', inst: 'اضغط على الكلمات لترتيبها في الجملة أو التسلسل الصحيح:', color: 'from-sky-600 via-blue-600 to-indigo-700' },
+                match: { badge: 'وصّل العمود الأول بالثاني (131-155)', inst: 'اختر عنصراً من العمود الأيسر ثم اضغط على ما يناسبه في العمود الأيمن:', color: 'from-emerald-600 via-teal-600 to-emerald-800' }
+            };
+
+            const tInfo = typeLabels[q.type];
+            document.getElementById('q-type-badge').textContent = tInfo.badge;
+            document.getElementById('q-instruction-ar').textContent = tInfo.inst;
+            document.getElementById('q-header-banner').className = `bg-gradient-to-l ${tInfo.color} text-white p-4 sm:p-5 flex flex-wrap items-center justify-between gap-3`;
+
+            // Update Flag Button
+            const flagBtn = document.getElementById('btn-flag-q');
+            if (st.flagged) {
+                flagBtn.innerHTML = `<i class="fa-solid fa-bookmark text-amber-300"></i><span>مؤجل للمراجعة ✓</span>`;
+                flagBtn.classList.add('ring-2', 'ring-amber-300');
+            } else {
+                flagBtn.innerHTML = `<i class="fa-regular fa-bookmark"></i><span>مراجعة لاحقاً</span>`;
+                flagBtn.classList.remove('ring-2', 'ring-amber-300');
+            }
+
+            // Render Prompt & Interactive Area
+            const promptContainer = document.getElementById('q-prompt-container');
+            const interactiveArea = document.getElementById('q-interactive-area');
+            promptContainer.innerHTML = '';
+            interactiveArea.innerHTML = '';
+
+            if (q.type === 'circle') {
+                renderCircleQuestion(q, st, promptContainer, interactiveArea);
+            } else if (q.type === 'letters') {
+                renderLettersQuestion(q, st, promptContainer, interactiveArea);
+            } else if (q.type === 'words') {
+                renderWordsQuestion(q, st, promptContainer, interactiveArea);
+            } else if (q.type === 'match') {
+                renderMatchQuestion(q, st, promptContainer, interactiveArea);
+            }
+
+            // Render Feedback Box & Footer Status
+            updateQuestionFeedbackUI(q, st);
+
+            // Prev / Next buttons state
+            document.getElementById('btn-prev-q').disabled = (currentIndex === 0);
+            document.getElementById('btn-next-q').innerHTML = (currentIndex === questions.length - 1)
+                ? `<span>عرض النتيجة النهائية</span><i class="fa-solid fa-award"></i>`
+                : `<span>السؤال التالي</span><i class="fa-solid fa-arrow-left"></i>`;
+
+            // Sync active tab highlight
+            highlightSectionTab(q.type);
+            renderQuestionBoard();
+        }
+
+        // 1. RENDER "ضع دائرة" (CIRCLE THE CORRECT ANSWER)
+        function renderCircleQuestion(q, st, promptEl, areaEl) {
+            promptEl.innerHTML = `
+                <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-5">
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                        <span class="text-xs font-extrabold text-rose-700 bg-rose-50 border border-rose-200 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-lightbulb ml-1"></i>${q.hint}
+                        </span>
+                        <span class="text-xs font-bold text-slate-400">سؤال رقم #${q.id}</span>
+                    </div>
+                    <p class="en-block text-xl sm:text-2xl font-bold text-slate-800 tracking-wide mt-2">${q.prompt}</p>
+                </div>
+            `;
+
+            const letters = ['a)', 'b)', 'c)'];
+            const colors = [
+                'border-rose-300 bg-rose-50/50 hover:bg-rose-50 text-slate-800',
+                'border-sky-300 bg-sky-50/50 hover:bg-sky-50 text-slate-800',
+                'border-amber-300 bg-amber-50/50 hover:bg-amber-50 text-slate-800'
+            ];
+
+            let html = `<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4" dir="ltr">`;
+            q.options.forEach((opt, idx) => {
+                const isSelected = st.answered && st.userValue === opt;
+                const isRightOption = opt === q.answer;
+
+                let extraClass = '';
+                if (isSelected) {
+                    extraClass = 'option-circled ring-2 ring-offset-2 ' + (instantFeedback ? (st.isCorrect ? 'ring-emerald-500 bg-emerald-50' : 'ring-rose-500 bg-rose-50') : 'ring-indigo-500');
+                } else if (st.answered && instantFeedback && isRightOption) {
+                    extraClass = 'ring-2 ring-emerald-400 bg-emerald-50/70';
+                }
+
+                const strokeColor = (instantFeedback && isSelected) ? (st.isCorrect ? '#10b981' : '#ef4444') : '#ef4444';
+
+                html += `
+                    <button onclick="selectCircleOption('${opt.replace(/'/g, "\\'")}')" 
+                            class="relative group p-5 rounded-2xl border-2 ${colors[idx % 3]} ${extraClass} transition-all flex items-center justify-center gap-3 text-lg sm:text-xl font-bold shadow-sm hover:shadow-md">
+                        <span class="text-sm font-black opacity-60">${letters[idx]}</span>
+                        <span class="en-text">${opt}</span>
+                        <!-- Hand-drawn SVG Circle Effect -->
+                        <svg class="circle-svg" viewBox="0 0 220 80" preserveAspectRatio="none">
+                            <path class="circle-path" style="stroke: ${strokeColor};" d="M 25,40 C 25,12 195,10 198,38 C 200,66 30,70 22,42 C 18,26 165,14 185,28" />
+                        </svg>
+                    </button>
+                `;
+            });
+            html += `</div>`;
+            areaEl.innerHTML = html;
+        }
+
+        function selectCircleOption(selectedOpt) {
+            const q = questions[currentIndex];
+            playTone('click');
+            const isCorrect = (selectedOpt === q.answer);
+            userState[q.id] = {
+                ...userState[q.id],
+                answered: true,
+                userValue: selectedOpt,
+                isCorrect: isCorrect
+            };
+            if (instantFeedback) {
+                playTone(isCorrect ? 'correct' : 'wrong');
+            }
+            loadQuestion(currentIndex);
+            updateGlobalProgressUI();
+        }
+
+        // 2. RENDER "رتب الحروف" (UNSCRAMBLE LETTERS)
+        function renderLettersQuestion(q, st, promptEl, areaEl) {
+            promptEl.innerHTML = `
+                <div class="bg-amber-50/70 border-2 border-amber-200 rounded-2xl p-5 flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs font-extrabold text-amber-800 bg-amber-100 px-3 py-1 rounded-full">${q.hint}</span>
+                        <h3 class="text-2xl sm:text-3xl font-black text-slate-800 mt-2">${q.ar}</h3>
+                    </div>
+                    <button onclick="speakText('${q.word}')" class="px-4 py-2.5 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-volume-high"></i>
+                        <span>نطق الكلمة</span>
+                    </button>
+                </div>
+            `;
+
+            const targetLen = q.word.length;
+            const currentBuiltWord = activeLetterIndices.map(i => q.scrambled[i]).join('');
+
+            // Answer Slots (LTR)
+            let slotsHtml = `<div class="mb-6"><div class="text-xs font-bold text-slate-500 mb-2">الكلمة التي قمت بترتيبها (اضغط على الحرف لإرجاعه):</div>`;
+            slotsHtml += `<div class="flex flex-wrap items-center justify-center gap-2 p-4 rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 min-h-[76px]" dir="ltr">`;
+
+            for (let s = 0; s < targetLen; s++) {
+                if (s < activeLetterIndices.length) {
+                    const charIdx = activeLetterIndices[s];
+                    const charVal = q.scrambled[charIdx];
+                    slotsHtml += `
+                        <button onclick="removeLetterAt(${s})" class="tile-pop w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-indigo-600 hover:bg-rose-600 text-white font-black text-xl sm:text-2xl shadow-md flex items-center justify-center en-text transition">
+                            ${charVal}
+                        </button>
+                    `;
+                } else {
+                    slotsHtml += `
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border-2 border-slate-200 text-slate-300 font-black text-lg flex items-center justify-center">
+                            ${s + 1}
+                        </div>
+                    `;
+                }
+            }
+            slotsHtml += `</div></div>`;
+
+            // Scrambled Letter Pool (LTR)
+            let poolHtml = `<div><div class="text-xs font-bold text-slate-500 mb-2">الحروف المبعثرة المتاحة:</div>`;
+            poolHtml += `<div class="flex flex-wrap items-center justify-center gap-2.5" dir="ltr">`;
+            q.scrambled.forEach((ch, idx) => {
+                const isUsed = activeLetterIndices.includes(idx);
+                poolHtml += `
+                    <button onclick="pickLetterIndex(${idx})" ${isUsed ? 'disabled' : ''} 
+                            class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl font-black text-xl sm:text-2xl border-2 transition en-text flex items-center justify-center ${isUsed ? 'bg-slate-100 border-slate-200 text-slate-300 opacity-40 cursor-not-allowed' : 'bg-white border-amber-400 text-slate-800 hover:bg-amber-50 shadow-sm hover:-translate-y-0.5'}">
+                        ${ch}
+                    </button>
+                `;
+            });
+            poolHtml += `</div></div>`;
+
+            areaEl.innerHTML = slotsHtml + poolHtml;
+        }
+
+        function pickLetterIndex(idx) {
+            const q = questions[currentIndex];
+            if (activeLetterIndices.includes(idx)) return;
+            playTone('click');
+            activeLetterIndices.push(idx);
+
+            if (activeLetterIndices.length === q.word.length) {
+                const formed = activeLetterIndices.map(i => q.scrambled[i]).join('');
+                const isCorrect = formed.toLowerCase() === q.word.toLowerCase();
+                userState[q.id] = {
+                    ...userState[q.id],
+                    answered: true,
+                    userValue: [...activeLetterIndices],
+                    isCorrect: isCorrect
+                };
+                if (instantFeedback) playTone(isCorrect ? 'correct' : 'wrong');
+                updateGlobalProgressUI();
+            } else {
+                userState[q.id].userValue = [...activeLetterIndices];
+            }
+            loadQuestion(currentIndex);
+        }
+
+        function removeLetterAt(slotPosition) {
+            const q = questions[currentIndex];
+            playTone('click');
+            activeLetterIndices.splice(slotPosition, 1);
+            userState[q.id] = {
+                ...userState[q.id],
+                answered: false,
+                isCorrect: false,
+                userValue: [...activeLetterIndices]
+            };
+            loadQuestion(currentIndex);
+            updateGlobalProgressUI();
+        }
+
+        // 3. RENDER "رتب الكلمات" (ARRANGE WORDS)
+        function renderWordsQuestion(q, st, promptEl, areaEl) {
+            promptEl.innerHTML = `
+                <div class="bg-sky-50/70 border-2 border-sky-200 rounded-2xl p-5">
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-xs font-extrabold text-sky-800 bg-sky-100 px-3 py-1 rounded-full">${q.topic}</span>
+                        <span class="text-xs font-bold text-slate-400">سؤال رقم #${q.id}</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-black text-slate-800 mt-2">${q.ar}</h3>
+                </div>
+            `;
+
+            // Answer Sentence Box (LTR)
+            let answerHtml = `<div class="mb-5"><div class="text-xs font-bold text-slate-500 mb-2">الجملة / الترتيب الذي كوّنته (اضغط على الكلمة لإزالتها):</div>`;
+            answerHtml += `<div class="flex flex-wrap items-center gap-2 p-4 rounded-2xl bg-slate-50 border-2 border-dashed border-sky-300 min-h-[76px]" dir="ltr">`;
+
+            if (activeWordIndices.length === 0) {
+                answerHtml += `<span class="text-xs font-bold text-slate-400 mx-auto">اضغط على الكلمات بالأسفل لترتيبها هنا من اليسار إلى اليمين...</span>`;
+            } else {
+                activeWordIndices.forEach((wIdx, pos) => {
+                    const wordText = q.shuffledWords[wIdx];
+                    answerHtml += `
+                        <button onclick="removeWordAt(${pos})" class="tile-pop px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-rose-600 text-white font-bold text-base sm:text-lg shadow-sm en-text transition flex items-center gap-1.5">
+                            <span>${wordText}</span>
+                        </button>
+                    `;
+                });
+            }
+            answerHtml += `</div></div>`;
+
+            // Word Bank Pool
+            let poolHtml = `<div><div class="text-xs font-bold text-slate-500 mb-2">الكلمات المتاحة للترتيب:</div>`;
+            poolHtml += `<div class="flex flex-wrap items-center justify-center gap-2.5" dir="ltr">`;
+            q.shuffledWords.forEach((w, idx) => {
+                const isUsed = activeWordIndices.includes(idx);
+                poolHtml += `
+                    <button onclick="pickWordIndex(${idx})" ${isUsed ? 'disabled' : ''} 
+                            class="px-4 py-2.5 rounded-xl font-bold text-base sm:text-lg border-2 transition en-text ${isUsed ? 'bg-slate-100 border-slate-200 text-slate-300 opacity-40 cursor-not-allowed' : 'bg-white border-sky-300 text-slate-800 hover:bg-sky-50 shadow-sm hover:-translate-y-0.5'}">
+                        ${w}
+                    </button>
+                `;
+            });
+            poolHtml += `</div></div>`;
+
+            areaEl.innerHTML = answerHtml + poolHtml;
+        }
+
+        function pickWordIndex(idx) {
+            const q = questions[currentIndex];
+            if (activeWordIndices.includes(idx)) return;
+            playTone('click');
+            activeWordIndices.push(idx);
+
+            if (activeWordIndices.length === q.words.length) {
+                const formedSentence = activeWordIndices.map(i => q.shuffledWords[i]).join(' ');
+                const targetSentence = q.words.join(' ');
+                const isCorrect = (formedSentence === targetSentence);
+                userState[q.id] = {
+                    ...userState[q.id],
+                    answered: true,
+                    userValue: [...activeWordIndices],
+                    isCorrect: isCorrect
+                };
+                if (instantFeedback) playTone(isCorrect ? 'correct' : 'wrong');
+                updateGlobalProgressUI();
+            } else {
+                userState[q.id].userValue = [...activeWordIndices];
+            }
+            loadQuestion(currentIndex);
+        }
+
+        function removeWordAt(pos) {
+            const q = questions[currentIndex];
+            playTone('click');
+            activeWordIndices.splice(pos, 1);
+            userState[q.id] = {
+                ...userState[q.id],
+                answered: false,
+                isCorrect: false,
+                userValue: [...activeWordIndices]
+            };
+            loadQuestion(currentIndex);
+            updateGlobalProgressUI();
+        }
+
+        // 4. RENDER "وصّل بالسهم" (MATCHING PAIRS WITH ARROWS)
+        const matchPalette = [
+            { card: 'bg-indigo-50 border-indigo-500 text-indigo-950', badge: 'bg-indigo-600 text-white', dot: 'bg-indigo-600 border-indigo-200', hex: '#4f46e5' },
+            { card: 'bg-purple-50 border-purple-500 text-purple-950', badge: 'bg-purple-600 text-white', dot: 'bg-purple-600 border-purple-200', hex: '#9333ea' },
+            { card: 'bg-amber-50 border-amber-500 text-amber-950', badge: 'bg-amber-500 text-white', dot: 'bg-amber-500 border-amber-200', hex: '#f59e0b' },
+            { card: 'bg-sky-50 border-sky-500 text-sky-950', badge: 'bg-sky-600 text-white', dot: 'bg-sky-600 border-sky-200', hex: '#0284c7' },
+            { card: 'bg-pink-50 border-pink-500 text-pink-950', badge: 'bg-pink-600 text-white', dot: 'bg-pink-600 border-pink-200', hex: '#db2777' }
+        ];
+
+        let livePointerPos = null;
+
+        function renderMatchQuestion(q, st, promptEl, areaEl) {
+            promptEl.innerHTML = `
+                <div class="bg-emerald-50/70 border-2 border-emerald-200 rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-extrabold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-arrow-left-long ml-1"></i>${q.topic} — توصيل بالسهم
+                        </span>
+                        <h3 class="text-base sm:text-lg font-black text-slate-800 mt-1.5">${q.title}</h3>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold text-emerald-700 bg-white px-3 py-1.5 rounded-xl border border-emerald-200 shadow-sm">
+                            الأسهم الموصولة: ${Object.keys(currentMatchConnections).length} / ${q.pairs.length}
+                        </span>
+                    </div>
+                </div>
+            `;
+
+            let html = `
+                <div id="match-board-container" 
+                     onmousemove="handleMatchMouseMove(event)" 
+                     onmouseleave="handleMatchMouseLeave()"
+                     class="relative grid grid-cols-2 gap-12 sm:gap-24 md:gap-32 mt-4 select-none items-center py-2">
+                    
+                    <!-- SVG Overlay for Arrows -->
+                    <svg id="match-svg-layer" class="absolute inset-0 w-full h-full pointer-events-none z-20 overflow-visible"></svg>
+            `;
+
+            // Column 1 (Right side in RTL - Source of Arrow)
+            html += `<div class="space-y-3.5 relative z-10"><div class="text-xs font-black text-slate-500 mb-2 text-center">العمود الأول (اضغط أو اسحب لبداية السهم)</div>`;
+            q.pairs.forEach((pair, lIdx) => {
+                const isConnected = currentMatchConnections.hasOwnProperty(lIdx);
+                const isSelected = (selectedMatchLeftIdx === lIdx);
+                const pal = matchPalette[lIdx % matchPalette.length];
+
+                let cardStyle = 'bg-white border-slate-200 text-slate-800 hover:border-emerald-400';
+                let badgeStyle = 'bg-slate-100 text-slate-700';
+                let portStyle = 'bg-slate-300 border-white';
+
+                if (isSelected) {
+                    cardStyle = 'bg-emerald-50 border-emerald-600 text-emerald-950 ring-2 ring-emerald-400 shadow-md';
+                    badgeStyle = 'bg-emerald-600 text-white';
+                    portStyle = 'bg-emerald-600 border-emerald-200 match-port-active';
+                } else if (isConnected) {
+                    cardStyle = `${pal.card} shadow-sm`;
+                    badgeStyle = pal.badge;
+                    portStyle = `${pal.dot}`;
+                }
+
+                html += `
+                    <button type="button"
+                            onclick="selectMatchLeft(${lIdx})"
+                            onpointerdown="startMatchDrag(${lIdx}, event)"
+                            class="w-full p-3 sm:p-4 rounded-2xl border-2 ${cardStyle} font-bold text-xs sm:text-base transition flex items-center justify-between gap-2 relative group">
+                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full ${badgeStyle} text-xs font-black flex items-center justify-center shrink-0">${lIdx + 1}</span>
+                        <span class="en-text flex-1 text-center px-1 break-words">${pair.left}</span>
+                        <!-- Connector Port on Inner Left Edge of Column 1 -->
+                        <span id="match-left-port-${lIdx}" 
+                              class="match-port w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 ${portStyle} flex items-center justify-center shrink-0 shadow-sm -ml-5 sm:-ml-6 z-30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                        </span>
+                    </button>
+                `;
+            });
+            html += `</div>`;
+
+            // Column 2 (Left side in RTL - Target of Arrowhead)
+            html += `<div class="space-y-3.5 relative z-10"><div class="text-xs font-black text-slate-500 mb-2 text-center">العمود الثاني (اضغط لتوجيه رأس السهم)</div>`;
+            q.shuffledRights.forEach((rVal, rIdx) => {
+                let connectedLeftIdx = null;
+                Object.entries(currentMatchConnections).forEach(([k, v]) => {
+                    if (v === rVal) connectedLeftIdx = parseInt(k);
+                });
+
+                let cardStyle = 'bg-white border-slate-200 text-slate-800 hover:border-indigo-400';
+                let badgeStyle = 'bg-slate-100 text-slate-500';
+                let portStyle = 'bg-slate-300 border-white';
+
+                if (connectedLeftIdx !== null) {
+                    const pal = matchPalette[connectedLeftIdx % matchPalette.length];
+                    cardStyle = `${pal.card} shadow-sm`;
+                    badgeStyle = pal.badge;
+                    portStyle = pal.dot;
+                } else if (selectedMatchLeftIdx !== null) {
+                    cardStyle = 'bg-white border-emerald-300 hover:bg-emerald-50/60 hover:border-emerald-500 text-slate-800';
+                    portStyle = 'bg-emerald-400 border-white animate-pulse';
+                }
+
+                const safeVal = rVal.replace(/'/g, "\\'");
+                html += `
+                    <button type="button"
+                            data-right-val="${rVal.replace(/"/g, '&quot;')}"
+                            onclick="selectMatchRight('${safeVal}')"
+                            onpointerup="finishMatchDrag('${safeVal}')"
+                            class="w-full p-3 sm:p-4 rounded-2xl border-2 ${cardStyle} font-bold text-xs sm:text-base transition flex items-center justify-between gap-2 relative group">
+                        <!-- Connector Port on Inner Right Edge of Column 2 (Target of Arrowhead) -->
+                        <span id="match-right-port-${rIdx}" 
+                              class="match-port w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 ${portStyle} flex items-center justify-center shrink-0 shadow-sm -mr-5 sm:-mr-6 z-30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                        </span>
+                        <span class="flex-1 text-center px-1 break-words">${rVal}</span>
+                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full ${badgeStyle} text-xs font-black flex items-center justify-center shrink-0">
+                            ${connectedLeftIdx !== null ? (connectedLeftIdx + 1) : '?'}
+                        </span>
+                    </button>
+                `;
+            });
+            html += `</div></div>`;
+
+            areaEl.innerHTML = html;
+
+            // Draw SVG arrows after DOM layout settles
+            requestAnimationFrame(() => {
+                drawMatchArrows();
+            });
+        }
+
+        function startMatchDrag(lIdx, event) {
+            if (event && event.pointerType === 'mouse' && event.button !== 0) return;
+            selectedMatchLeftIdx = lIdx;
+            const container = document.getElementById('match-board-container');
+            if (container && event) {
+                const rect = container.getBoundingClientRect();
+                livePointerPos = {
+                    x: event.clientX - rect.left,
+                    y: event.clientY - rect.top
+                };
+            }
+            drawMatchArrows();
+        }
+
+        function finishMatchDrag(rVal) {
+            if (selectedMatchLeftIdx !== null) {
+                selectMatchRight(rVal);
+            }
+        }
+
+        function handleMatchMouseMove(event) {
+            if (selectedMatchLeftIdx === null) return;
+            const container = document.getElementById('match-board-container');
+            if (!container) return;
+            const rect = container.getBoundingClientRect();
+            livePointerPos = {
+                x: event.clientX - rect.left,
+                y: event.clientY - rect.top
+            };
+            drawMatchArrows(true);
+        }
+
+        function handleMatchMouseLeave() {
+            livePointerPos = null;
+            drawMatchArrows(true);
+        }
+
+        function drawMatchArrows(skipAnimation = false) {
+            const q = questions[currentIndex];
+            if (!q || q.type !== 'match') return;
+            const container = document.getElementById('match-board-container');
+            const svg = document.getElementById('match-svg-layer');
+            if (!container || !svg) return;
+
+            const st = userState[q.id];
+            const containerRect = container.getBoundingClientRect();
+
+            // Define SVG Arrowhead Markers for each color + correct/wrong + live preview
+            let defsHtml = `<defs>`;
+            matchPalette.forEach((pal, idx) => {
+                defsHtml += `
+                    <marker id="arrowhead-${idx}" markerWidth="9" markerHeight="9" refX="7.2" refY="4.5" orient="auto" markerUnits="strokeWidth">
+                        <path d="M 0.5 1 L 8 4.5 L 0.5 8 L 2.2 4.5 Z" fill="${pal.hex}" />
+                    </marker>
+                `;
+            });
+            defsHtml += `
+                <marker id="arrowhead-correct" markerWidth="9" markerHeight="9" refX="7.2" refY="4.5" orient="auto" markerUnits="strokeWidth">
+                    <path d="M 0.5 1 L 8 4.5 L 0.5 8 L 2.2 4.5 Z" fill="#10b981" />
+                </marker>
+                <marker id="arrowhead-wrong" markerWidth="9" markerHeight="9" refX="7.2" refY="4.5" orient="auto" markerUnits="strokeWidth">
+                    <path d="M 0.5 1 L 8 4.5 L 0.5 8 L 2.2 4.5 Z" fill="#ef4444" />
+                </marker>
+                <marker id="arrowhead-live" markerWidth="9" markerHeight="9" refX="7.2" refY="4.5" orient="auto" markerUnits="strokeWidth">
+                    <path d="M 0.5 1 L 8 4.5 L 0.5 8 L 2.2 4.5 Z" fill="#059669" />
+                </marker>
+            </defs>`;
+
+            let pathsHtml = '';
+
+            // Draw established connections as arrows from Column 1 Port -> Column 2 Port
+            Object.entries(currentMatchConnections).forEach(([leftIdxStr, rightVal]) => {
+                const lIdx = parseInt(leftIdxStr);
+                const rIdx = q.shuffledRights.indexOf(rightVal);
+                if (rIdx === -1) return;
+
+                const leftPort = document.getElementById(`match-left-port-${lIdx}`);
+                const rightPort = document.getElementById(`match-right-port-${rIdx}`);
+                if (!leftPort || !rightPort) return;
+
+                const lRect = leftPort.getBoundingClientRect();
+                const rRect = rightPort.getBoundingClientRect();
+
+                // Start at center of leftPort (on Column 1's left edge)
+                const x1 = lRect.left + lRect.width / 2 - containerRect.left;
+                const y1 = lRect.top + lRect.height / 2 - containerRect.top;
+
+                // End right at the outer edge of rightPort so the arrowhead tip touches the target dot cleanly
+                const x2 = rRect.right - containerRect.left + 2;
+                const y2 = rRect.top + rRect.height / 2 - containerRect.top;
+
+                // Determine color and marker
+                const pal = matchPalette[lIdx % matchPalette.length];
+                let strokeColor = pal.hex;
+                let markerId = `arrowhead-${lIdx % matchPalette.length}`;
+                let isPairCorrect = (q.pairs[lIdx] && q.pairs[lIdx].right === rightVal);
+
+                if (st.answered && instantFeedback) {
+                    strokeColor = isPairCorrect ? '#10b981' : '#ef4444';
+                    markerId = isPairCorrect ? 'arrowhead-correct' : 'arrowhead-wrong';
+                }
+
+                // Smooth S-curve or straight arrow with slight curve
+                const dx = Math.abs(x2 - x1) * 0.35;
+                const c1x = x1 - dx;
+                const c2x = x2 + dx;
+                const dPath = `M ${x1} ${y1} C ${c1x} ${y1}, ${c2x} ${y2}, ${x2} ${y2}`;
+                const animClass = skipAnimation ? '' : 'match-arrow-path';
+
+                // Midpoint for status icon or number badge on the arrow
+                const midX = (x1 + x2) / 2;
+                const midY = (y1 + y2) / 2;
+
+                pathsHtml += `
+                    <g>
+                        <!-- White halo behind arrow for clear visibility when arrows cross -->
+                        <path d="${dPath}" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.85" />
+                        <!-- Main Colored Arrow Line -->
+                        <path d="${dPath}" fill="none" stroke="${strokeColor}" stroke-width="3.8" stroke-linecap="round" marker-end="url(#${markerId})" class="${animClass}" />
+                        <!-- Midpoint Badge -->
+                        <circle cx="${midX}" cy="${midY}" r="10" fill="${strokeColor}" stroke="#ffffff" stroke-width="2" />
+                        <text x="${midX}" y="${midY + 3.5}" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="900">
+                            ${(st.answered && instantFeedback) ? (isPairCorrect ? '✓' : '✗') : (lIdx + 1)}
+                        </text>
+                    </g>
+                `;
+            });
+
+            // Draw Live Interactive Preview Arrow while a Column 1 item is selected
+            if (selectedMatchLeftIdx !== null && livePointerPos) {
+                const leftPort = document.getElementById(`match-left-port-${selectedMatchLeftIdx}`);
+                if (leftPort) {
+                    const lRect = leftPort.getBoundingClientRect();
+                    const x1 = lRect.left + lRect.width / 2 - containerRect.left;
+                    const y1 = lRect.top + lRect.height / 2 - containerRect.top;
+                    const x2 = livePointerPos.x;
+                    const y2 = livePointerPos.y;
+
+                    const dx = Math.abs(x2 - x1) * 0.3;
+                    const dLive = `M ${x1} ${y1} C ${x1 - dx} ${y1}, ${x2 + dx} ${y2}, ${x2} ${y2}`;
+                    pathsHtml += `
+                        <path d="${dLive}" fill="none" stroke="#059669" stroke-width="3.2" stroke-dasharray="7,5" stroke-linecap="round" marker-end="url(#arrowhead-live)" opacity="0.85" />
+                    `;
+                }
+            }
+
+            svg.innerHTML = defsHtml + pathsHtml;
+        }
+
+        function selectMatchLeft(lIdx) {
+            playTone('click');
+            if (selectedMatchLeftIdx === lIdx) {
+                selectedMatchLeftIdx = null;
+                livePointerPos = null;
+            } else {
+                selectedMatchLeftIdx = lIdx;
+            }
+            loadQuestion(currentIndex);
+        }
+
+        function selectMatchRight(rVal) {
+            const q = questions[currentIndex];
+            livePointerPos = null;
+            if (selectedMatchLeftIdx === null) {
+                // If user clicks an already connected right item, disconnect its arrow
+                Object.keys(currentMatchConnections).forEach(k => {
+                    if (currentMatchConnections[k] === rVal) delete currentMatchConnections[k];
+                });
+                userState[q.id] = {
+                    ...userState[q.id],
+                    answered: false,
+                    isCorrect: false,
+                    userValue: { ...currentMatchConnections }
+                };
+                loadQuestion(currentIndex);
+                updateGlobalProgressUI();
+                return;
+            }
+
+            playTone('click');
+            // Remove any previous left item connected to this rVal
+            Object.keys(currentMatchConnections).forEach(k => {
+                if (currentMatchConnections[k] === rVal) delete currentMatchConnections[k];
+            });
+
+            currentMatchConnections[selectedMatchLeftIdx] = rVal;
+            selectedMatchLeftIdx = null;
+
+            // Check if all pairs in this question are connected
+            if (Object.keys(currentMatchConnections).length === q.pairs.length) {
+                let allRight = true;
+                q.pairs.forEach((pair, idx) => {
+                    if (currentMatchConnections[idx] !== pair.right) allRight = false;
+                });
+
+                userState[q.id] = {
+                    ...userState[q.id],
+                    answered: true,
+                    userValue: { ...currentMatchConnections },
+                    isCorrect: allRight
+                };
+                if (instantFeedback) playTone(allRight ? 'correct' : 'wrong');
+                updateGlobalProgressUI();
+            } else {
+                userState[q.id].userValue = { ...currentMatchConnections };
+            }
+
+            loadQuestion(currentIndex);
+        }
+
+        // ============================================================================
+        // FEEDBACK & QUESTION NAVIGATION BOARD (1 - 155)
+        // ============================================================================
+        function updateQuestionFeedbackUI(q, st) {
+            const fbBox = document.getElementById('q-feedback-box');
+            const statusPill = document.getElementById('q-status-pill');
+
+            if (!st.answered) {
+                fbBox.classList.add('hidden');
+                statusPill.textContent = 'غير مُجاب بعد';
+                statusPill.className = 'text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-200 text-slate-700';
+                return;
+            }
+
+            if (instantFeedback) {
+                fbBox.classList.remove('hidden');
+                if (st.isCorrect) {
+                    fbBox.className = 'mt-5 p-4 rounded-2xl border-2 border-emerald-300 bg-emerald-50 text-emerald-900 flex items-start gap-3';
+                    fbBox.innerHTML = `
+                        <i class="fa-solid fa-circle-check text-2xl text-emerald-600 mt-0.5"></i>
+                        <div>
+                            <div class="font-black text-sm sm:text-base">إجابة صحيحة وممتازة! أحسنت يا بطل 🌟</div>
+                            <div class="text-xs font-bold text-emerald-700 mt-0.5">${q.explain}</div>
+                        </div>
+                    `;
+                    statusPill.textContent = 'إجابة صحيحة ✓';
+                    statusPill.className = 'text-xs font-extrabold px-3 py-1.5 rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+                } else {
+                    fbBox.className = 'mt-5 p-4 rounded-2xl border-2 border-rose-300 bg-rose-50 text-rose-900 flex items-start gap-3';
+                    fbBox.innerHTML = `
+                        <i class="fa-solid fa-circle-exclamation text-2xl text-rose-600 mt-0.5"></i>
+                        <div>
+                            <div class="font-black text-sm sm:text-base">إجابة غير دقيقة — حاول مرة أخرى أو راجع الشرح:</div>
+                            <div class="text-xs font-bold text-rose-700 mt-0.5">${q.explain}</div>
+                        </div>
+                    `;
+                    statusPill.textContent = 'بحاجة لمراجعة ✗';
+                    statusPill.className = 'text-xs font-extrabold px-3 py-1.5 rounded-xl bg-rose-100 text-rose-800 border border-rose-300';
+                }
+            } else {
+                fbBox.classList.add('hidden');
+                statusPill.textContent = 'تم حفظ الإجابة ✓';
+                statusPill.className = 'text-xs font-extrabold px-3 py-1.5 rounded-xl bg-indigo-100 text-indigo-800';
+            }
+        }
+
+        function renderQuestionBoard() {
+            const grid = document.getElementById('question-board-grid');
+            let html = '';
+            let filteredCount = 0;
+
+            questions.forEach((q, idx) => {
+                const st = userState[q.id];
+                if (boardFilter === 'unanswered' && st.answered) return;
+                if (boardFilter === 'answered' && !st.answered) return;
+                if (boardFilter === 'flagged' && !st.flagged) return;
+
+                filteredCount++;
+                const isCurrent = (idx === currentIndex);
+
+                let btnStyle = 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100';
+                if (st.answered) {
+                    if (instantFeedback) {
+                        btnStyle = st.isCorrect
+                            ? 'bg-emerald-500 border-emerald-600 text-white font-black'
+                            : 'bg-rose-500 border-rose-600 text-white font-black';
+                    } else {
+                        btnStyle = 'bg-indigo-600 border-indigo-700 text-white font-black';
+                    }
+                }
+                if (st.flagged) {
+                    btnStyle += ' ring-2 ring-amber-400';
+                }
+                if (isCurrent) {
+                    btnStyle += ' ring-4 ring-indigo-400 scale-105 z-10';
+                }
+
+                html += `
+                    <button onclick="loadQuestion(${idx})" class="h-9 rounded-xl border text-xs font-bold transition flex items-center justify-center relative ${btnStyle}" title="سؤال ${q.id} - ${q.topic}">
+                        <span>${q.id}</span>
+                        ${st.flagged ? '<span class="w-2 h-2 rounded-full bg-amber-300 absolute -top-0.5 -right-0.5"></span>' : ''}
+                    </button>
+                `;
+            });
+
+            if (filteredCount === 0) {
+                html = `<div class="col-span-full py-8 text-center text-xs font-bold text-slate-400">لا توجد أسئلة مطابقة لهذا الفلتر</div>`;
+            }
+
+            grid.innerHTML = html;
+            document.getElementById('board-filter-label').textContent = `المعروض (${filteredCount})`;
+        }
+
+        function setBoardFilter(filter) {
+            boardFilter = filter;
+            ['all', 'unanswered', 'answered', 'flagged'].forEach(f => {
+                const btn = document.getElementById('bf-' + f);
+                if (f === filter) {
+                    btn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 text-white';
+                } else {
+                    btn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200';
+                }
+            });
+            renderQuestionBoard();
+        }
+
+        function updateGlobalProgressUI() {
+            let answered = 0, correct = 0, wrong = 0, flagged = 0;
+            questions.forEach(q => {
+                const st = userState[q.id];
+                if (st.answered) {
+                    answered++;
+                    if (st.isCorrect) correct++;
+                    else wrong++;
+                }
+                if (st.flagged) flagged++;
+            });
+
+            const unanswered = questions.length - answered;
+            const percent = Math.round((answered / questions.length) * 100);
+            const scorePercent = Math.round((correct / questions.length) * 100);
+
+            document.getElementById('hdr-answered').textContent = answered;
+            document.getElementById('hdr-percent').textContent = percent + '%';
+            document.getElementById('stat-correct').textContent = correct;
+            document.getElementById('stat-wrong').textContent = wrong;
+            document.getElementById('stat-unanswered').textContent = unanswered;
+            document.getElementById('stat-flagged').textContent = flagged;
+
+            const lvl = getStudentLevelInfo(scorePercent, answered);
+            document.getElementById('live-level-badge').textContent = `${lvl.shortTitle} (${scorePercent}%)`;
+            document.getElementById('live-level-icon').textContent = lvl.emoji;
+        }
+
+        function getStudentLevelInfo(pct, answeredCount) {
+            if (answeredCount === 0) {
+                return {
+                    shortTitle: 'لم يبدأ التقييم بعد',
+                    fullTitle: 'قيد التقييم (ابدأ بحل الأسئلة)',
+                    emoji: '🎯',
+                    stars: '☆☆☆☆☆',
+                    recommendation: 'يرجى الإجابة على أسئلة الاختبار لتحديد المستوى اللغوي بدقة.'
+                };
+            }
+            if (pct >= 90) {
+                return {
+                    shortTitle: 'متقدم متميز (B1/B2)',
+                    fullTitle: 'المستوى المتقدم المتميز (Advanced - B1/B2)',
+                    emoji: '🏆',
+                    stars: '★★★★★',
+                    recommendation: 'أداء استثنائي! يتقن الطالب قواعد التفضيل (Superlatives)، زمن الماضي البسيط والأفعال غير المنتظمة، والأعداد حتى 1000، والمفردات والشهور بامتياز. يُنصح بالانتقال لمهارات القراءة الموسعة والتعبير الكتابي.'
+                };
+            } else if (pct >= 75) {
+                return {
+                    shortTitle: 'متوسط مرتفع (A2+)',
+                    fullTitle: 'المستوى المتوسط المرتفع (Upper-Intermediate - A2+)',
+                    emoji: '🌟',
+                    stars: '★★★★☆',
+                    recommendation: 'مستوى جيد جداً! يمتلك الطالب حصيلة ممتازة في المفردات وتكوين الجمل والأرقام، مع حاجة لمراجعة بسيطة لبعض الأفعال غير المنتظمة في الماضي البسيط.'
+                };
+            } else if (pct >= 60) {
+                return {
+                    shortTitle: 'متوسط (A2)',
+                    fullTitle: 'المستوى المتوسط (Intermediate - A2)',
+                    emoji: '👍',
+                    stars: '★★★☆☆',
+                    recommendation: 'مستوى متوسط جيد. يستطيع الطالب التمييز بين المفردات والشهور والأرقام، ويُنصح بتكثيف التدريب على ترتيب الكلمات لتكوين الأسئلة وصيغ التفضيل (the most / -est).'
+                };
+            } else if (pct >= 40) {
+                return {
+                    shortTitle: 'مبتدئ متطور (A1)',
+                    fullTitle: 'المستوى المبتدئ المتطور (Elementary - A1)',
+                    emoji: '🌱',
+                    stars: '★★☆☆☆',
+                    recommendation: 'يمتلك الطالب الأساسيات الأولية للمفردات والأرقام، ويحتاج إلى خطة تقوية مركزة في تهجئة الحروف وتصريف الأفعال في الماضي البسيط (Regular & Irregular Verbs).'
+                };
+            } else {
+                return {
+                    shortTitle: 'تأسيسي (Pre-A1)',
+                    fullTitle: 'المستوى التأسيسي (Foundation - Pre-A1)',
+                    emoji: '📘',
+                    stars: '★☆☆☆☆',
+                    recommendation: 'يحتاج الطالب إلى برنامج تأسيسي يبدأ بحفظ المفردات الأساسية، شهور السنة، الأرقام من 1 إلى 100، والتدرب على تهجئة الحروف خطوة بخطوة.'
+                };
+            }
+        }
+
+        // ============================================================================
+        // NAVIGATION & CONTROLS
+        // ============================================================================
+        function nextQuestion() {
+            if (currentIndex < questions.length - 1) {
+                loadQuestion(currentIndex + 1);
+            } else {
+                showResultsView();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                loadQuestion(currentIndex - 1);
+            }
+        }
+
+        function clearCurrentAnswer() {
+            const q = questions[currentIndex];
+            userState[q.id] = {
+                ...userState[q.id],
+                answered: false,
+                isCorrect: false,
+                userValue: null
+            };
+            loadQuestion(currentIndex);
+            updateGlobalProgressUI();
+        }
+
+        function toggleFlagCurrent() {
+            const q = questions[currentIndex];
+            userState[q.id].flagged = !userState[q.id].flagged;
+            loadQuestion(currentIndex);
+            updateGlobalProgressUI();
+        }
+
+        function toggleInstantFeedback() {
+            instantFeedback = !instantFeedback;
+            const btn = document.getElementById('btn-instant-mode');
+            if (instantFeedback) {
+                btn.className = 'px-3 py-2 rounded-xl text-xs font-bold border-2 border-emerald-500 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition flex items-center gap-1.5';
+                btn.innerHTML = `<i class="fa-solid fa-bolt text-emerald-600"></i><span>التصحيح الفوري: مفعّل</span>`;
+            } else {
+                btn.className = 'px-3 py-2 rounded-xl text-xs font-bold border-2 border-slate-300 bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center gap-1.5';
+                btn.innerHTML = `<i class="fa-solid fa-eye-slash text-slate-500"></i><span>التصحيح الفوري: مخفي</span>`;
+            }
+            loadQuestion(currentIndex);
+        }
+
+        function jumpToSection(sec) {
+            if (sec === 'all') loadQuestion(0);
+            else if (sec === 'circle') loadQuestion(0);
+            else if (sec === 'letters') loadQuestion(60);
+            else if (sec === 'words') loadQuestion(95);
+            else if (sec === 'match') loadQuestion(130);
+            returnToExam();
+        }
+
+        function highlightSectionTab(activeType) {
+            const map = {
+                circle: 'tab-circle',
+                letters: 'tab-letters',
+                words: 'tab-words',
+                match: 'tab-match'
+            };
+            ['tab-all', 'tab-circle', 'tab-letters', 'tab-words', 'tab-match'].forEach(id => {
+                const el = document.getElementById(id);
+                el.classList.remove('ring-2', 'ring-indigo-500', 'scale-105');
+            });
+            const activeEl = document.getElementById(map[activeType]);
+            if (activeEl) activeEl.classList.add('ring-2', 'ring-indigo-500');
+        }
+
+        function jumpToInputNumber() {
+            const val = parseInt(document.getElementById('jump-input').value);
+            if (val >= 1 && val <= 155) {
+                loadQuestion(val - 1);
+                returnToExam();
+            }
+        }
+
+        function toggleFullBoardModal() {
+            const modal = document.getElementById('full-board-modal');
+            if (modal.classList.contains('hidden')) {
+                renderFullBoardModalContent();
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function renderFullBoardModalContent() {
+            const container = document.getElementById('full-board-content');
+            const sections = [
+                { title: 'القسم الأول: ضع دائرة حول الإجابة الصحيحة (الأسئلة 1 - 60)', start: 1, end: 60, color: 'text-rose-700 bg-rose-50 border-rose-200' },
+                { title: 'القسم الثاني: رتب الحروف لتكوين الكلمة (الأسئلة 61 - 95)', start: 61, end: 95, color: 'text-amber-800 bg-amber-50 border-amber-200' },
+                { title: 'القسم الثالث: رتب الكلمات لتكوين جملة (الأسئلة 96 - 130)', start: 96, end: 130, color: 'text-sky-800 bg-sky-50 border-sky-200' },
+                { title: 'القسم الرابع: وصّل العمود الأول بالثاني (الأسئلة 131 - 155)', start: 131, end: 155, color: 'text-emerald-800 bg-emerald-50 border-emerald-200' }
+            ];
+
+            let html = '';
+            sections.forEach(sec => {
+                html += `
+                    <div class="border rounded-2xl p-4 bg-slate-50/60">
+                        <div class="inline-block px-3 py-1 rounded-xl border text-xs sm:text-sm font-black mb-3 ${sec.color}">${sec.title}</div>
+                        <div class="grid grid-cols-8 sm:grid-cols-12 md:grid-cols-15 gap-1.5">
+                `;
+                for (let qNum = sec.start; qNum <= sec.end; qNum++) {
+                    const st = userState[qNum];
+                    let btnStyle = 'bg-white border-slate-300 text-slate-700 hover:bg-indigo-50';
+                    if (st.answered) {
+                        btnStyle = st.isCorrect
+                            ? 'bg-emerald-500 border-emerald-600 text-white font-black'
+                            : 'bg-rose-500 border-rose-600 text-white font-black';
+                    }
+                    html += `
+                        <button onclick="loadQuestion(${qNum - 1}); toggleFullBoardModal(); returnToExam();" 
+                                class="h-9 rounded-xl border text-xs font-bold transition flex items-center justify-center ${btnStyle}">
+                            ${qNum}
+                        </button>
+                    `;
+                }
+                html += `</div></div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        // ============================================================================
+        // DEMO SIMULATION FOR TEACHER & RESULTS / PRINTABLE VIEW
+        // ============================================================================
+        function openDemoModal() {
+            document.getElementById('demo-modal').classList.remove('hidden');
+        }
+        function closeDemoModal() {
+            document.getElementById('demo-modal').classList.add('hidden');
+        }
+
+        function simulateStudentScore(accuracyRatio) {
+            questions.forEach((q, idx) => {
+                const makeCorrect = ((idx * 17 + 5) % 100) < (accuracyRatio * 100);
+                if (q.type === 'circle') {
+                    const chosen = makeCorrect ? q.answer : q.options.find(o => o !== q.answer);
+                    userState[q.id] = { answered: true, isCorrect: makeCorrect, userValue: chosen, flagged: false };
+                } else if (q.type === 'letters') {
+                    const indices = q.word.split('').map((_, i) => i);
+                    userState[q.id] = { answered: true, isCorrect: makeCorrect, userValue: indices, flagged: false };
+                } else if (q.type === 'words') {
+                    const indices = q.words.map((_, i) => i);
+                    userState[q.id] = { answered: true, isCorrect: makeCorrect, userValue: indices, flagged: false };
+                } else if (q.type === 'match') {
+                    const conn = {};
+                    q.pairs.forEach((p, i) => { conn[i] = p.right; });
+                    userState[q.id] = { answered: true, isCorrect: makeCorrect, userValue: conn, flagged: false };
+                }
+            });
+            closeDemoModal();
+            updateGlobalProgressUI();
+            loadQuestion(currentIndex);
+            showResultsView();
+        }
+
+        function resetAllAnswers() {
+            questions.forEach(q => {
+                userState[q.id] = { answered: false, isCorrect: false, userValue: null, flagged: false };
+            });
+            closeDemoModal();
+            updateGlobalProgressUI();
+            loadQuestion(0);
+            returnToExam();
+        }
+
+        function updateStudentData() {
+            document.getElementById('rep-student-name').textContent = document.getElementById('student-name').value || 'طالب متميز';
+            document.getElementById('rep-student-grade').textContent = document.getElementById('student-grade').value || '-';
+            document.getElementById('rep-teacher-name').textContent = document.getElementById('teacher-name').value || '-';
+        }
+
+        function showResultsView() {
+            updateStudentData();
+            const now = new Date();
+            document.getElementById('rep-date').textContent = now.toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            let totalCorrect = 0, totalAnswered = 0;
+            const typeStats = {
+                circle: { title: 'ضع دائرة حول الإجابة', icon: 'fa-circle-dot', total: 60, correct: 0, color: 'rose' },
+                letters: { title: 'رتب الحروف (الإملاء)', icon: 'fa-spell-check', total: 35, correct: 0, color: 'amber' },
+                words: { title: 'رتب الكلمات (الجمل)', icon: 'fa-arrow-down-short-wide', total: 35, correct: 0, color: 'sky' },
+                match: { title: 'وصّل العمودين', icon: 'fa-link', total: 25, correct: 0, color: 'emerald' }
+            };
+
+            const topicGroups = {
+                super: { title: 'صيغة التفضيل (Superlatives)', total: 0, correct: 0 },
+                past: { title: 'الماضي البسيط والأفعال (Past & Verbs)', total: 0, correct: 0 },
+                vocab: { title: 'المفردات والكلمات (Vocabulary)', total: 0, correct: 0 },
+                months: { title: 'شهور السنة والوقت (Months & Time)', total: 0, correct: 0 },
+                numbers: { title: 'الأرقام 1 إلى 1000 (Numbers)', total: 0, correct: 0 }
+            };
+
+            questions.forEach(q => {
+                const st = userState[q.id];
+                if (st.answered) totalAnswered++;
+                if (st.isCorrect) {
+                    totalCorrect++;
+                    typeStats[q.type].correct++;
+                }
+
+                // Map to curriculum group
+                let grp = 'vocab';
+                if (q.topic.includes('التفضيل')) grp = 'super';
+                else if (q.topic.includes('الماضي') || q.topic.includes('الأفعال')) grp = 'past';
+                else if (q.topic.includes('شهور') || q.topic.includes('الشهور')) grp = 'months';
+                else if (q.topic.includes('الأرقام') || q.topic.includes('أرقام')) grp = 'numbers';
+
+                topicGroups[grp].total++;
+                if (st.isCorrect) topicGroups[grp].correct++;
+            });
+
+            const pct = Math.round((totalCorrect / 155) * 100);
+            const lvl = getStudentLevelInfo(pct, totalAnswered);
+
+            document.getElementById('rep-answered-count').textContent = `${totalAnswered} / 155`;
+            document.getElementById('rep-level-emoji').textContent = lvl.emoji;
+            document.getElementById('rep-level-title').textContent = lvl.fullTitle;
+            document.getElementById('rep-score-number').textContent = totalCorrect;
+            document.getElementById('rep-score-percent').textContent = pct + '%';
+            document.getElementById('rep-stars').textContent = lvl.stars;
+            document.getElementById('rep-recommendation').textContent = lvl.recommendation;
+
+            // Render Question Type Breakdown
+            const typeContainer = document.getElementById('rep-type-breakdown');
+            typeContainer.innerHTML = Object.values(typeStats).map(t => {
+                const tPct = Math.round((t.correct / t.total) * 100);
+                return `
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-black text-sm text-slate-800">${t.title}</span>
+                            <span class="text-xs font-extrabold px-2 py-0.5 rounded-lg bg-indigo-100 text-indigo-800">${tPct}%</span>
+                        </div>
+                        <div class="text-xl font-black text-indigo-900 mb-2">${t.correct} <span class="text-xs text-slate-400 font-bold">/ ${t.total} سؤال</span></div>
+                        <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-indigo-600 rounded-full" style="width: ${tPct}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Render Topic Breakdown
+            const topicContainer = document.getElementById('rep-topic-breakdown');
+            topicContainer.innerHTML = Object.values(topicGroups).map(g => {
+                const gPct = g.total > 0 ? Math.round((g.correct / g.total) * 100) : 0;
+                return `
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex flex-col justify-between">
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="font-bold text-xs sm:text-sm text-slate-800">${g.title}</span>
+                            <span class="text-xs font-black text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-lg">${g.correct}/${g.total}</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-emerald-500 rounded-full" style="width: ${gPct}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('exam-workspace').classList.add('hidden');
+            document.getElementById('results-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function returnToExam() {
+            document.getElementById('results-view').classList.add('hidden');
+            document.getElementById('exam-workspace').classList.remove('hidden');
+        }
+
+        // Initialize on Window Load
+        window.onload = function () {
+            loadQuestion(0);
+            updateGlobalProgressUI();
+            window.addEventListener('resize', () => {
+                drawMatchArrows(true);
+            });
+        };
+    </script>
+</body>
+</html>
